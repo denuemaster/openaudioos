@@ -8,8 +8,9 @@ typedef enum {
     OAOS_AIRPLAY_STATE_IDLE = 1,
     OAOS_AIRPLAY_STATE_ADVERTISING = 2,
     OAOS_AIRPLAY_STATE_CONNECTED = 3,
-    OAOS_AIRPLAY_STATE_STREAMING = 4,
-    OAOS_AIRPLAY_STATE_ERROR = 5,
+    OAOS_AIRPLAY_STATE_FP_SETUP = 4,
+    OAOS_AIRPLAY_STATE_STREAMING = 5,
+    OAOS_AIRPLAY_STATE_ERROR = 6,
 } oaos_airplay_state_t;
 
 typedef struct {
@@ -26,8 +27,10 @@ typedef struct {
     uint32_t rtsp_connections;
     uint32_t rtsp_requests;
     uint32_t rtsp_options;
-    uint32_t rtsp_fp_setup;
     uint32_t rtsp_info;
+    uint32_t rtsp_fp_setup;
+    uint32_t rtsp_pair_setup;
+    uint32_t rtsp_pair_verify;
     uint32_t rtsp_announce;
     uint32_t rtsp_setup;
     uint32_t rtsp_record;
@@ -35,9 +38,10 @@ typedef struct {
     uint32_t packets_received;
     uint32_t frames_pushed;
     uint32_t errors;
+    uint32_t last_content_length;
+    uint8_t last_fp_header[16];
     const char *device_name;
     const char *raop_instance;
-    const char *last_fp_setup_summary;
     const char *protocol_note;
 } oaos_airplay_status_t;
 

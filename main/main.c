@@ -14,7 +14,7 @@ static const char *TAG = "OpenAudioOS";
 
 void app_main(void)
 {
-    ESP_LOGI(TAG, "OpenAudioOS M0.14 starting");
+    ESP_LOGI(TAG, "OpenAudioOS M0.15 starting");
 
     ESP_ERROR_CHECK(oaos_system_init());
     ESP_ERROR_CHECK(oaos_storage_init());
@@ -25,5 +25,5 @@ void app_main(void)
     ESP_ERROR_CHECK(oaos_airplay_init());
     ESP_ERROR_CHECK(oaos_web_init());
 
-    ESP_LOGI(TAG, "OpenAudioOS M0.14 ready");
+    ESP_LOGI(TAG, "OpenAudioOS M0.15 ready");
 }
