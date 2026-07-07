@@ -4,6 +4,7 @@
 #include <math.h>
 #include <string.h>
 #include <stdio.h>
+#include <strings.h>
 
 #include "esp_log.h"
 #include "esp_mac.h"
@@ -25,17 +26,29 @@ static SemaphoreHandle_t ap_mutex;
 static bool enabled = true;
 static bool placeholder_streaming = false;
 static bool mdns_started = false;
+static bool raop_advertised = false;
+static bool airplay_advertised = false;
 static bool rtsp_listener_started = false;
 static oaos_airplay_state_t state = OAOS_AIRPLAY_STATE_IDLE;
 static uint64_t start_time_us = 0;
+
 static uint32_t sessions_started = 0;
 static uint32_t rtsp_connections = 0;
 static uint32_t rtsp_requests = 0;
+static uint32_t rtsp_options = 0;
+static uint32_t rtsp_info = 0;
+static uint32_t rtsp_announce = 0;
+static uint32_t rtsp_setup = 0;
+static uint32_t rtsp_record = 0;
+static uint32_t rtsp_teardown = 0;
 static uint32_t packets_received = 0;
 static uint32_t frames_pushed = 0;
 static uint32_t errors = 0;
+
 static char raop_instance[64] = "OpenAudioOS";
 static char device_name[32] = "OpenAudioOS";
+static char device_id[18] = "00:00:00:00:00:00";
+static char device_id_compact[13] = "000000000000";
 
 const char *oaos_airplay_state_name(oaos_airplay_state_t s)
 {
@@ -58,23 +71,25 @@ static void set_state_locked(oaos_airplay_state_t new_state)
     }
 }
 
-static void build_raop_instance_name(void)
+static void build_device_ids(void)
 {
     uint8_t mac[6] = {0};
     esp_read_mac(mac, ESP_MAC_WIFI_STA);
-    snprintf(raop_instance, sizeof(raop_instance),
-             "%02X%02X%02X%02X%02X%02X@%s",
-             mac[0], mac[1], mac[2], mac[3], mac[4], mac[5],
-             device_name);
+
+    snprintf(device_id, sizeof(device_id), "%02X:%02X:%02X:%02X:%02X:%02X",
+             mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+    snprintf(device_id_compact, sizeof(device_id_compact), "%02X%02X%02X%02X%02X%02X",
+             mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+    snprintf(raop_instance, sizeof(raop_instance), "%s@%s", device_id_compact, device_name);
 }
 
-static esp_err_t start_mdns_raop(void)
+static esp_err_t start_mdns_airplay(void)
 {
     if (mdns_started) {
         return ESP_OK;
     }
 
-    build_raop_instance_name();
+    build_device_ids();
 
     esp_err_t err = mdns_init();
     if (err != ESP_OK) {
@@ -85,6 +100,11 @@ static esp_err_t start_mdns_raop(void)
     mdns_hostname_set("openaudioos");
     mdns_instance_name_set(device_name);
 
+    /*
+     * RAOP TXT records are deliberately more realistic than M0.9.
+     * This still does NOT make us a valid AirPlay receiver.
+     * It only improves discovery credibility.
+     */
     mdns_txt_item_t raop_txt[] = {
         {"txtvers", "1"},
         {"ch", "2"},
@@ -99,9 +119,10 @@ static esp_err_t start_mdns_raop(void)
         {"sv", "false"},
         {"tp", "UDP"},
         {"vn", "65537"},
-        {"vs", "130.14"},
-        {"am", "OpenAudioOS"},
-        {"sf", "0x4"}
+        {"vs", "220.68"},
+        {"am", "AudioAccessory6,1"},
+        {"sf", "0x4"},
+        {"pk", "0000000000000000000000000000000000000000000000000000000000000000"}
     };
 
     err = mdns_service_add(raop_instance, "_raop", "_tcp", AIRPLAY_RTSP_PORT,
@@ -110,6 +131,29 @@ static esp_err_t start_mdns_raop(void)
         ESP_LOGE(TAG, "mDNS RAOP service add failed: %s", esp_err_to_name(err));
         return err;
     }
+    raop_advertised = true;
+
+    mdns_txt_item_t airplay_txt[] = {
+        {"deviceid", device_id},
+        {"features", "0x5A7FFFF7,0x1E"},
+        {"flags", "0x4"},
+        {"model", "AudioAccessory6,1"},
+        {"manufacturer", "OpenAudioOS"},
+        {"serialNumber", device_id_compact},
+        {"srcvers", "220.68"},
+        {"protovers", "1.1"},
+        {"vv", "2"},
+        {"pi", "00000000-0000-0000-0000-000000000000"},
+        {"pk", "0000000000000000000000000000000000000000000000000000000000000000"}
+    };
+
+    err = mdns_service_add(device_name, "_airplay", "_tcp", AIRPLAY_RTSP_PORT,
+                           airplay_txt, sizeof(airplay_txt) / sizeof(airplay_txt[0]));
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "mDNS AirPlay service add failed: %s", esp_err_to_name(err));
+        return err;
+    }
+    airplay_advertised = true;
 
     mdns_started = true;
 
@@ -120,20 +164,35 @@ static esp_err_t start_mdns_raop(void)
     xSemaphoreGive(ap_mutex);
 
     ESP_LOGI(TAG, "RAOP mDNS advertised as '%s' on port %d", raop_instance, AIRPLAY_RTSP_PORT);
-    ESP_LOGW(TAG, "M0.9 only advertises/listens. Full RTSP/RAOP auth + audio is not implemented yet.");
+    ESP_LOGI(TAG, "AirPlay mDNS advertised as '%s' deviceid=%s on port %d", device_name, device_id, AIRPLAY_RTSP_PORT);
+    ESP_LOGW(TAG, "M0.10 still does not implement playable AirPlay audio.");
 
     return ESP_OK;
 }
 
+static const char *find_header_case(const char *request, const char *header)
+{
+    size_t header_len = strlen(header);
+    const char *p = request;
+    while (*p) {
+        if (strncasecmp(p, header, header_len) == 0) {
+            return p + header_len;
+        }
+        const char *next = strstr(p, "\n");
+        if (!next) break;
+        p = next + 1;
+    }
+    return NULL;
+}
+
 static void get_cseq(const char *request, char *out, size_t out_len)
 {
-    const char *p = strcasestr(request, "CSeq:");
+    const char *p = find_header_case(request, "CSeq:");
     if (!p) {
         strlcpy(out, "1", out_len);
         return;
     }
 
-    p += 5;
     while (*p == ' ' || *p == '\t') p++;
 
     size_t i = 0;
@@ -143,51 +202,163 @@ static void get_cseq(const char *request, char *out, size_t out_len)
     out[i] = 0;
 }
 
+static void get_method(const char *request, char *out, size_t out_len)
+{
+    size_t i = 0;
+    while (request[i] && request[i] != ' ' && request[i] != '\r' && request[i] != '\n' && i + 1 < out_len) {
+        out[i] = request[i];
+        i++;
+    }
+    out[i] = 0;
+}
+
+static void send_rtsp_response(int client, const char *cseq, const char *code, const char *headers, const char *body)
+{
+    if (!body) body = "";
+    if (!headers) headers = "";
+
+    char response[2048];
+    snprintf(response, sizeof(response),
+             "RTSP/1.0 %s\r\n"
+             "CSeq: %s\r\n"
+             "Server: OpenAudioOS-M0.10\r\n"
+             "%s"
+             "Content-Length: %u\r\n"
+             "\r\n"
+             "%s",
+             code,
+             cseq,
+             headers,
+             (unsigned)strlen(body),
+             body);
+
+    send(client, response, strlen(response), 0);
+}
+
+static void handle_rtsp_request(int client, const char *rx)
+{
+    char method[32] = {0};
+    char cseq[32] = {0};
+    get_method(rx, method, sizeof(method));
+    get_cseq(rx, cseq, sizeof(cseq));
+
+    xSemaphoreTake(ap_mutex, portMAX_DELAY);
+    rtsp_requests++;
+    xSemaphoreGive(ap_mutex);
+
+    ESP_LOGI(TAG, "RTSP method=%s cseq=%s", method, cseq);
+
+    if (strcasecmp(method, "OPTIONS") == 0) {
+        xSemaphoreTake(ap_mutex, portMAX_DELAY);
+        rtsp_options++;
+        xSemaphoreGive(ap_mutex);
+
+        send_rtsp_response(client, cseq, "200 OK",
+                           "Public: ANNOUNCE, SETUP, RECORD, PAUSE, FLUSH, TEARDOWN, OPTIONS, GET_PARAMETER, SET_PARAMETER\r\n",
+                           "");
+        return;
+    }
+
+    if (strcasecmp(method, "GET") == 0 || strstr(rx, "GET /info") || strstr(rx, "GET_PARAMETER")) {
+        xSemaphoreTake(ap_mutex, portMAX_DELAY);
+        rtsp_info++;
+        xSemaphoreGive(ap_mutex);
+
+        /*
+         * Minimal JSON-ish info. This is not full Apple binary plist /info.
+         * It only helps us observe client behaviour without returning 501 immediately.
+         */
+        char body[768];
+        snprintf(body, sizeof(body),
+                 "{"
+                 "\"name\":\"%s\","
+                 "\"model\":\"AudioAccessory6,1\","
+                 "\"manufacturer\":\"OpenAudioOS\","
+                 "\"deviceid\":\"%s\","
+                 "\"features\":\"0x5A7FFFF7,0x1E\","
+                 "\"srcvers\":\"220.68\","
+                 "\"statusFlags\":\"0x4\","
+                 "\"vv\":2"
+                 "}\n",
+                 device_name,
+                 device_id);
+
+        send_rtsp_response(client, cseq, "200 OK",
+                           "Content-Type: application/json\r\n",
+                           body);
+        return;
+    }
+
+    if (strcasecmp(method, "ANNOUNCE") == 0) {
+        xSemaphoreTake(ap_mutex, portMAX_DELAY);
+        rtsp_announce++;
+        xSemaphoreGive(ap_mutex);
+
+        send_rtsp_response(client, cseq, "501 Not Implemented",
+                           "Content-Type: text/plain\r\n",
+                           "ANNOUNCE is not implemented yet in M0.10.\n");
+        return;
+    }
+
+    if (strcasecmp(method, "SETUP") == 0) {
+        xSemaphoreTake(ap_mutex, portMAX_DELAY);
+        rtsp_setup++;
+        xSemaphoreGive(ap_mutex);
+
+        send_rtsp_response(client, cseq, "501 Not Implemented",
+                           "Content-Type: text/plain\r\n",
+                           "SETUP is not implemented yet in M0.10.\n");
+        return;
+    }
+
+    if (strcasecmp(method, "RECORD") == 0) {
+        xSemaphoreTake(ap_mutex, portMAX_DELAY);
+        rtsp_record++;
+        xSemaphoreGive(ap_mutex);
+
+        send_rtsp_response(client, cseq, "501 Not Implemented",
+                           "Content-Type: text/plain\r\n",
+                           "RECORD is not implemented yet in M0.10.\n");
+        return;
+    }
+
+    if (strcasecmp(method, "TEARDOWN") == 0) {
+        xSemaphoreTake(ap_mutex, portMAX_DELAY);
+        rtsp_teardown++;
+        xSemaphoreGive(ap_mutex);
+
+        send_rtsp_response(client, cseq, "200 OK", NULL, "");
+        return;
+    }
+
+    send_rtsp_response(client, cseq, "501 Not Implemented",
+                       "Content-Type: text/plain\r\n",
+                       "This RTSP method is not implemented yet in M0.10.\n");
+}
+
 static void rtsp_client_task(void *arg)
 {
     int client = (int)(intptr_t)arg;
-    char rx[1024];
+    char rx[2048];
 
     xSemaphoreTake(ap_mutex, portMAX_DELAY);
     rtsp_connections++;
     set_state_locked(OAOS_AIRPLAY_STATE_CONNECTED);
     xSemaphoreGive(ap_mutex);
 
-    int len = recv(client, rx, sizeof(rx) - 1, 0);
-    if (len > 0) {
-        rx[len] = 0;
-        char cseq[32];
-        get_cseq(rx, cseq, sizeof(cseq));
+    while (true) {
+        int len = recv(client, rx, sizeof(rx) - 1, 0);
+        if (len <= 0) break;
 
-        char first_line[128] = {0};
+        rx[len] = 0;
+        char first_line[160] = {0};
         const char *eol = strstr(rx, "\r\n");
         size_t first_len = eol ? (size_t)(eol - rx) : (size_t)len;
         if (first_len >= sizeof(first_line)) first_len = sizeof(first_line) - 1;
         memcpy(first_line, rx, first_len);
 
         ESP_LOGI(TAG, "RTSP request: %s", first_line);
-
-        const char *body =
-            "OpenAudioOS M0.9 RAOP listener is alive, but full RAOP is not implemented yet.\n";
-
-        char response[512];
-        snprintf(response, sizeof(response),
-                 "RTSP/1.0 501 Not Implemented\r\n"
-                 "CSeq: %s\r\n"
-                 "Server: OpenAudioOS-M0.9\r\n"
-                 "Content-Type: text/plain\r\n"
-                 "Content-Length: %u\r\n"
-                 "\r\n"
-                 "%s",
-                 cseq,
-                 (unsigned)strlen(body),
-                 body);
-
-        send(client, response, strlen(response), 0);
-
-        xSemaphoreTake(ap_mutex, portMAX_DELAY);
-        rtsp_requests++;
-        xSemaphoreGive(ap_mutex);
+        handle_rtsp_request(client, rx);
     }
 
     shutdown(client, 0);
@@ -249,7 +420,7 @@ static void rtsp_listener_task(void *arg)
     if (enabled && mdns_started) set_state_locked(OAOS_AIRPLAY_STATE_ADVERTISING);
     xSemaphoreGive(ap_mutex);
 
-    ESP_LOGI(TAG, "RTSP placeholder listener started on TCP port %d", AIRPLAY_RTSP_PORT);
+    ESP_LOGI(TAG, "RTSP listener started on TCP port %d", AIRPLAY_RTSP_PORT);
 
     while (true) {
         struct sockaddr_storage source_addr;
@@ -260,7 +431,7 @@ static void rtsp_listener_task(void *arg)
             continue;
         }
 
-        xTaskCreate(rtsp_client_task, "oaos_rtsp_client", 4096, (void *)(intptr_t)client, 6, NULL);
+        xTaskCreate(rtsp_client_task, "oaos_rtsp_client", 6144, (void *)(intptr_t)client, 6, NULL);
     }
 }
 
@@ -322,10 +493,10 @@ esp_err_t oaos_airplay_init(void)
 
     start_time_us = esp_timer_get_time();
 
-    ESP_LOGI(TAG, "AirPlay/RAOP foundation initialized");
-    ESP_LOGW(TAG, "M0.9 advertises RAOP and listens on RTSP port 5000, but it is not a playable AirPlay receiver yet.");
+    ESP_LOGI(TAG, "AirPlay/RAOP discovery foundation M0.10 initialized");
+    ESP_LOGW(TAG, "M0.10 improves discovery and RTSP OPTIONS/info only. It is not a playable receiver yet.");
 
-    esp_err_t err = start_mdns_raop();
+    esp_err_t err = start_mdns_airplay();
     if (err != ESP_OK) {
         xSemaphoreTake(ap_mutex, portMAX_DELAY);
         errors++;
@@ -390,6 +561,8 @@ oaos_airplay_status_t oaos_airplay_get_status(void)
     xSemaphoreTake(ap_mutex, portMAX_DELAY);
     s.enabled = enabled;
     s.mdns_started = mdns_started;
+    s.raop_advertised = raop_advertised;
+    s.airplay_advertised = airplay_advertised;
     s.rtsp_listener_started = rtsp_listener_started;
     s.rtsp_port = AIRPLAY_RTSP_PORT;
     s.state = state;
@@ -398,11 +571,18 @@ oaos_airplay_status_t oaos_airplay_get_status(void)
     s.sessions_started = sessions_started;
     s.rtsp_connections = rtsp_connections;
     s.rtsp_requests = rtsp_requests;
+    s.rtsp_options = rtsp_options;
+    s.rtsp_info = rtsp_info;
+    s.rtsp_announce = rtsp_announce;
+    s.rtsp_setup = rtsp_setup;
+    s.rtsp_record = rtsp_record;
+    s.rtsp_teardown = rtsp_teardown;
     s.packets_received = packets_received;
     s.frames_pushed = frames_pushed;
     s.errors = errors;
     s.device_name = device_name;
-    s.protocol_note = "M0.9: RAOP mDNS advertisement and RTSP placeholder listener only; no full AirPlay playback yet";
+    s.raop_instance = raop_instance;
+    s.protocol_note = "M0.10: _raop + _airplay mDNS, RTSP OPTIONS/info placeholders; no playable AirPlay audio yet";
     xSemaphoreGive(ap_mutex);
 
     return s;

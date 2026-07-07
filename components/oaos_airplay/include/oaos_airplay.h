@@ -15,6 +15,8 @@ typedef enum {
 typedef struct {
     bool enabled;
     bool mdns_started;
+    bool raop_advertised;
+    bool airplay_advertised;
     bool rtsp_listener_started;
     int rtsp_port;
     oaos_airplay_state_t state;
@@ -23,10 +25,17 @@ typedef struct {
     uint32_t sessions_started;
     uint32_t rtsp_connections;
     uint32_t rtsp_requests;
+    uint32_t rtsp_options;
+    uint32_t rtsp_info;
+    uint32_t rtsp_announce;
+    uint32_t rtsp_setup;
+    uint32_t rtsp_record;
+    uint32_t rtsp_teardown;
     uint32_t packets_received;
     uint32_t frames_pushed;
     uint32_t errors;
     const char *device_name;
+    const char *raop_instance;
     const char *protocol_note;
 } oaos_airplay_status_t;
 

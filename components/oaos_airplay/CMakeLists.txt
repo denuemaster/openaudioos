@@ -6,4 +6,5 @@ idf_component_register(
         esp_timer
         mdns
         lwip
+        json
 )
