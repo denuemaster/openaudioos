@@ -23,23 +23,28 @@ static const char *TAG = "oaos_web";
 static const char *web_page =
 "<!doctype html><html><head><meta charset='utf-8'>"
 "<meta name='viewport' content='width=device-width,initial-scale=1'>"
-"<title>OpenAudioOS M0.5</title>"
+"<title>OpenAudioOS M0.7</title>"
 "<style>"
 "body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;background:#111;color:#eee;padding:24px;margin:0}"
 ".card{max-width:900px;margin:auto;background:#1d1d1f;border-radius:18px;padding:28px;box-shadow:0 20px 60px #0008}"
-"input,button{box-sizing:border-box;padding:12px;margin:6px 0;border-radius:10px;border:0;font-size:16px}"
+"input,button,select{box-sizing:border-box;padding:12px;margin:6px 0;border-radius:10px;border:0;font-size:16px}"
 "button{background:#0a84ff;color:white;font-weight:700;cursor:pointer}button.secondary{background:#333}"
 ".row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1;min-width:160px}"
 ".ok{color:#5cff9d}.warn{color:#ffd36e}.muted{color:#aaa}pre{background:#101010;padding:16px;border-radius:12px;overflow:auto}a{color:#8ab4ff}"
 "</style></head>"
 "<body><div class='card'>"
-"<h1>OpenAudioOS M0.5</h1>"
-"<p class='ok'>STA-only networking and OTA partition support</p>"
+"<h1>OpenAudioOS M0.7</h1>"
+"<p class='ok'>Audio source abstraction ready</p>"
 "<p class='muted'>Use the IP address shown in the serial monitor or your router.</p>"
 "<div class='row'>"
 "<button onclick='api(\"/api/audio/start\")'>Start tone</button>"
 "<button class='secondary' onclick='api(\"/api/audio/stop\")'>Stop tone</button>"
 "<button class='secondary' onclick='location.href=\"/reset-wifi\"'>Reset WiFi</button>"
+"</div>"
+"<h2>Audio Source</h2>"
+"<div class='row'>"
+"<select id='source'><option value='1'>Test Tone</option><option value='2'>AirPlay placeholder</option><option value='3'>USB Audio placeholder</option><option value='4'>Spotify placeholder</option></select>"
+"<button onclick='setSource()'>Set source</button>"
 "</div>"
 "<h2>Audio Control</h2>"
 "<label>Volume <span id='volLabel'></span></label>"
@@ -56,10 +61,11 @@ static const char *web_page =
 "<h2>Status</h2><pre id='status'>Loading...</pre>"
 "</div>"
 "<script>"
-"async function refresh(){let r=await fetch('/api/status');let j=await r.json();document.getElementById('status').textContent=JSON.stringify(j,null,2);document.getElementById('vol').value=j.audio.volume;document.getElementById('volLabel').textContent=j.audio.volume+'%';document.getElementById('freq').value=j.audio.frequency_hz;}"
+"async function refresh(){let r=await fetch('/api/status');let j=await r.json();document.getElementById('status').textContent=JSON.stringify(j,null,2);document.getElementById('vol').value=j.audio.volume;document.getElementById('volLabel').textContent=j.audio.volume+'%';document.getElementById('freq').value=j.audio.frequency_hz;document.getElementById('source').value=j.audio.active_source_id;}"
 "async function api(u){await fetch(u);refresh();}"
 "async function setVolume(v){document.getElementById('volLabel').textContent=v+'%';await fetch('/api/audio/volume?value='+v);}"
 "async function setFreq(){let v=document.getElementById('freq').value;await fetch('/api/audio/frequency?value='+v);refresh();}"
+"async function setSource(){let v=document.getElementById('source').value;await fetch('/api/audio/source?value='+v);refresh();}"
 "async function uploadFw(){let f=document.getElementById('fw').files[0];if(!f){alert('Choose firmware .bin first');return;}let r=await fetch('/ota',{method:'POST',body:f});alert(await r.text());}"
 "setInterval(refresh,15000);refresh();"
 "</script></body></html>";
@@ -165,6 +171,24 @@ static esp_err_t reset_wifi_handler(httpd_req_t *req)
 static esp_err_t audio_start_handler(httpd_req_t *req){ oaos_audio_start(); httpd_resp_sendstr(req, "OK"); return ESP_OK; }
 static esp_err_t audio_stop_handler(httpd_req_t *req){ oaos_audio_stop(); httpd_resp_sendstr(req, "OK"); return ESP_OK; }
 
+static esp_err_t audio_source_handler(httpd_req_t *req)
+{
+    int value = 0;
+    if (!query_int(req, "value", &value)) {
+        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "missing value");
+        return ESP_FAIL;
+    }
+
+    esp_err_t err = oaos_audio_set_active_source((oaos_audio_source_type_t)value);
+    if (err != ESP_OK) {
+        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "invalid source");
+        return ESP_FAIL;
+    }
+
+    httpd_resp_sendstr(req, "OK");
+    return ESP_OK;
+}
+
 static esp_err_t audio_volume_handler(httpd_req_t *req)
 {
     int value = 0;
@@ -197,10 +221,10 @@ static esp_err_t api_status_handler(httpd_req_t *req)
     const esp_partition_t *running = esp_ota_get_running_partition();
     const esp_partition_t *next = esp_ota_get_next_update_partition(NULL);
 
-    char json[1024];
+    char json[1280];
     snprintf(json, sizeof(json),
              "{"
-             "\"name\":\"OpenAudioOS M0.5\","
+             "\"name\":\"OpenAudioOS M0.7\","
              "\"version\":\"%s\","
              "\"configured\":%s,"
              "\"has_saved_wifi\":%s,"
@@ -216,11 +240,20 @@ static esp_err_t api_status_handler(httpd_req_t *req)
                 "\"ota_available\":%s"
              "},"
              "\"audio\":{"
+                "\"active_source_id\":%d,"
+                "\"active_source\":\"%s\","
                 "\"enabled\":%s,"
                 "\"frequency_hz\":%d,"
                 "\"volume\":%d,"
-                "\"frames_written\":%llu,"
-                "\"underruns\":%lu,"
+                "\"source_frames_generated\":%llu,"
+                "\"source_frames_pushed\":%llu,"
+                "\"output_frames_written\":%llu,"
+                "\"buffer_underruns\":%lu,"
+                "\"buffer_overruns\":%lu,"
+                "\"i2s_errors\":%lu,"
+                "\"source_switches\":%lu,"
+                "\"ringbuffer_used_bytes\":%u,"
+                "\"ringbuffer_free_bytes\":%u,"
                 "\"sample_rate\":%d,"
                 "\"i2s_bclk\":%d,"
                 "\"i2s_dout\":%d,"
@@ -239,11 +272,20 @@ static esp_err_t api_status_handler(httpd_req_t *req)
              running ? running->label : "unknown",
              next ? next->label : "none",
              next ? "true" : "false",
+             (int)audio.active_source,
+             oaos_audio_source_name(audio.active_source),
              audio.enabled ? "true" : "false",
              audio.frequency_hz,
              audio.volume,
-             (unsigned long long)audio.frames_written,
-             (unsigned long)audio.underruns,
+             (unsigned long long)audio.source_frames_generated,
+             (unsigned long long)audio.source_frames_pushed,
+             (unsigned long long)audio.output_frames_written,
+             (unsigned long)audio.buffer_underruns,
+             (unsigned long)audio.buffer_overruns,
+             (unsigned long)audio.i2s_errors,
+             (unsigned long)audio.source_switches,
+             (unsigned)audio.ringbuffer_used_bytes,
+             (unsigned)audio.ringbuffer_free_bytes,
              OAOS_SAMPLE_RATE,
              OAOS_I2S_BCLK_GPIO,
              OAOS_I2S_DOUT_GPIO,
@@ -266,20 +308,16 @@ static esp_err_t ota_handler(httpd_req_t *req)
     esp_ota_handle_t ota_handle;
     esp_err_t err = esp_ota_begin(update_partition, OTA_WITH_SEQUENTIAL_WRITES, &ota_handle);
     if (err != ESP_OK) {
-        ESP_LOGE(TAG, "esp_ota_begin failed: %s", esp_err_to_name(err));
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA begin failed");
         return ESP_FAIL;
     }
 
     char buf[2048];
     int remaining = req->content_len;
-    int written = 0;
-
     while (remaining > 0) {
         int to_read = remaining > (int)sizeof(buf) ? (int)sizeof(buf) : remaining;
         int received = httpd_req_recv(req, buf, to_read);
         if (received <= 0) {
-            ESP_LOGE(TAG, "OTA receive failed");
             esp_ota_abort(ota_handle);
             httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Receive failed");
             return ESP_FAIL;
@@ -287,31 +325,25 @@ static esp_err_t ota_handler(httpd_req_t *req)
 
         err = esp_ota_write(ota_handle, buf, received);
         if (err != ESP_OK) {
-            ESP_LOGE(TAG, "esp_ota_write failed: %s", esp_err_to_name(err));
             esp_ota_abort(ota_handle);
             httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA write failed");
             return ESP_FAIL;
         }
-
-        written += received;
         remaining -= received;
     }
 
     err = esp_ota_end(ota_handle);
     if (err != ESP_OK) {
-        ESP_LOGE(TAG, "esp_ota_end failed: %s", esp_err_to_name(err));
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA end failed");
         return ESP_FAIL;
     }
 
     err = esp_ota_set_boot_partition(update_partition);
     if (err != ESP_OK) {
-        ESP_LOGE(TAG, "esp_ota_set_boot_partition failed: %s", esp_err_to_name(err));
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA set boot failed");
         return ESP_FAIL;
     }
 
-    ESP_LOGI(TAG, "OTA successful, written=%d. Rebooting.", written);
     httpd_resp_sendstr(req, "OTA successful. Rebooting.");
     vTaskDelay(pdMS_TO_TICKS(1000));
     esp_restart();
@@ -323,7 +355,7 @@ esp_err_t oaos_web_init(void)
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
     config.server_port = 80;
     config.stack_size = 8192;
-    config.max_uri_handlers = 12;
+    config.max_uri_handlers = 13;
 
     httpd_handle_t server = NULL;
     ESP_RETURN_ON_ERROR(httpd_start(&server, &config), TAG, "httpd_start failed");
@@ -335,6 +367,7 @@ esp_err_t oaos_web_init(void)
         {.uri="/api/status", .method=HTTP_GET, .handler=api_status_handler},
         {.uri="/api/audio/start", .method=HTTP_GET, .handler=audio_start_handler},
         {.uri="/api/audio/stop", .method=HTTP_GET, .handler=audio_stop_handler},
+        {.uri="/api/audio/source", .method=HTTP_GET, .handler=audio_source_handler},
         {.uri="/api/audio/volume", .method=HTTP_GET, .handler=audio_volume_handler},
         {.uri="/api/audio/frequency", .method=HTTP_GET, .handler=audio_frequency_handler},
         {.uri="/ota", .method=HTTP_POST, .handler=ota_handler},
