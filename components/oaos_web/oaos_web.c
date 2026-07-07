@@ -23,19 +23,19 @@ static const char *TAG = "oaos_web";
 static const char *web_page =
 "<!doctype html><html><head><meta charset='utf-8'>"
 "<meta name='viewport' content='width=device-width,initial-scale=1'>"
-"<title>OpenAudioOS M0.4</title>"
+"<title>OpenAudioOS M0.5</title>"
 "<style>"
 "body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;background:#111;color:#eee;padding:24px;margin:0}"
-".card{max-width:880px;margin:auto;background:#1d1d1f;border-radius:18px;padding:28px;box-shadow:0 20px 60px #0008}"
+".card{max-width:900px;margin:auto;background:#1d1d1f;border-radius:18px;padding:28px;box-shadow:0 20px 60px #0008}"
 "input,button{box-sizing:border-box;padding:12px;margin:6px 0;border-radius:10px;border:0;font-size:16px}"
 "button{background:#0a84ff;color:white;font-weight:700;cursor:pointer}button.secondary{background:#333}"
 ".row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1;min-width:160px}"
-".ok{color:#5cff9d}.muted{color:#aaa}pre{background:#101010;padding:16px;border-radius:12px;overflow:auto}a{color:#8ab4ff}"
+".ok{color:#5cff9d}.warn{color:#ffd36e}.muted{color:#aaa}pre{background:#101010;padding:16px;border-radius:12px;overflow:auto}a{color:#8ab4ff}"
 "</style></head>"
 "<body><div class='card'>"
-"<h1>OpenAudioOS M0.4</h1>"
-"<p class='ok'>STA-only networking, mDNS and OTA ready</p>"
-"<p>Use the IP address shown in the serial monitor or your router.</p>"
+"<h1>OpenAudioOS M0.5</h1>"
+"<p class='ok'>STA-only networking and OTA partition support</p>"
+"<p class='muted'>Use the IP address shown in the serial monitor or your router.</p>"
 "<div class='row'>"
 "<button onclick='api(\"/api/audio/start\")'>Start tone</button>"
 "<button class='secondary' onclick='api(\"/api/audio/stop\")'>Stop tone</button>"
@@ -52,7 +52,7 @@ static const char *web_page =
 "<h2>OTA Upload</h2>"
 "<input id='fw' type='file' accept='.bin'>"
 "<button onclick='uploadFw()'>Upload app .bin</button>"
-"<p class='muted'>Use build/OpenAudioOS.bin or app binary from idf.py build.</p>"
+"<p class='warn'>Use the application binary from <code>build/OpenAudioOS.bin</code>, not a merged flash image.</p>"
 "<h2>Status</h2><pre id='status'>Loading...</pre>"
 "</div>"
 "<script>"
@@ -61,7 +61,7 @@ static const char *web_page =
 "async function setVolume(v){document.getElementById('volLabel').textContent=v+'%';await fetch('/api/audio/volume?value='+v);}"
 "async function setFreq(){let v=document.getElementById('freq').value;await fetch('/api/audio/frequency?value='+v);refresh();}"
 "async function uploadFw(){let f=document.getElementById('fw').files[0];if(!f){alert('Choose firmware .bin first');return;}let r=await fetch('/ota',{method:'POST',body:f});alert(await r.text());}"
-"setInterval(refresh,10000);refresh();"
+"setInterval(refresh,15000);refresh();"
 "</script></body></html>";
 
 static const char *setup_page =
@@ -194,21 +194,27 @@ static esp_err_t api_status_handler(httpd_req_t *req)
     esp_ip4_addr_t ip = oaos_wifi_get_ip();
     oaos_audio_state_t audio = oaos_audio_get_state();
     const esp_app_desc_t *app = esp_app_get_description();
+    const esp_partition_t *running = esp_ota_get_running_partition();
+    const esp_partition_t *next = esp_ota_get_next_update_partition(NULL);
 
-    char json[896];
+    char json[1024];
     snprintf(json, sizeof(json),
              "{"
-             "\"name\":\"OpenAudioOS M0.4\","
+             "\"name\":\"OpenAudioOS M0.5\","
              "\"version\":\"%s\","
              "\"configured\":%s,"
              "\"has_saved_wifi\":%s,"
              "\"ssid\":\"%s\","
              "\"hostname\":\"%s\","
-             "\"url\":\"http://%s.local\","
              "\"ip\":\"" IPSTR "\","
              "\"uptime_ms\":%lld,"
              "\"free_heap\":%lu,"
              "\"free_psram\":%lu,"
+             "\"ota\":{"
+                "\"running_partition\":\"%s\","
+                "\"next_partition\":\"%s\","
+                "\"ota_available\":%s"
+             "},"
              "\"audio\":{"
                 "\"enabled\":%s,"
                 "\"frequency_hz\":%d,"
@@ -226,11 +232,13 @@ static esp_err_t api_status_handler(httpd_req_t *req)
              oaos_wifi_has_saved_config() ? "true" : "false",
              oaos_wifi_get_ssid(),
              OAOS_HOSTNAME,
-             OAOS_HOSTNAME,
              IP2STR(&ip),
              (long long)(esp_timer_get_time() / 1000),
              (unsigned long)esp_get_free_heap_size(),
              (unsigned long)heap_caps_get_free_size(MALLOC_CAP_SPIRAM),
+             running ? running->label : "unknown",
+             next ? next->label : "none",
+             next ? "true" : "false",
              audio.enabled ? "true" : "false",
              audio.frequency_hz,
              audio.volume,
@@ -249,47 +257,61 @@ static esp_err_t ota_handler(httpd_req_t *req)
 {
     const esp_partition_t *update_partition = esp_ota_get_next_update_partition(NULL);
     if (!update_partition) {
-        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "No OTA partition. Need OTA partition table in next milestone.");
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "No OTA partition found");
         return ESP_FAIL;
     }
+
+    ESP_LOGI(TAG, "OTA update to partition: %s, size=%d bytes", update_partition->label, req->content_len);
 
     esp_ota_handle_t ota_handle;
     esp_err_t err = esp_ota_begin(update_partition, OTA_WITH_SEQUENTIAL_WRITES, &ota_handle);
     if (err != ESP_OK) {
+        ESP_LOGE(TAG, "esp_ota_begin failed: %s", esp_err_to_name(err));
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA begin failed");
         return ESP_FAIL;
     }
 
     char buf[2048];
     int remaining = req->content_len;
+    int written = 0;
+
     while (remaining > 0) {
-        int received = httpd_req_recv(req, buf, remaining > sizeof(buf) ? sizeof(buf) : remaining);
+        int to_read = remaining > (int)sizeof(buf) ? (int)sizeof(buf) : remaining;
+        int received = httpd_req_recv(req, buf, to_read);
         if (received <= 0) {
+            ESP_LOGE(TAG, "OTA receive failed");
             esp_ota_abort(ota_handle);
             httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Receive failed");
             return ESP_FAIL;
         }
+
         err = esp_ota_write(ota_handle, buf, received);
         if (err != ESP_OK) {
+            ESP_LOGE(TAG, "esp_ota_write failed: %s", esp_err_to_name(err));
             esp_ota_abort(ota_handle);
             httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA write failed");
             return ESP_FAIL;
         }
+
+        written += received;
         remaining -= received;
     }
 
     err = esp_ota_end(ota_handle);
     if (err != ESP_OK) {
+        ESP_LOGE(TAG, "esp_ota_end failed: %s", esp_err_to_name(err));
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA end failed");
         return ESP_FAIL;
     }
 
     err = esp_ota_set_boot_partition(update_partition);
     if (err != ESP_OK) {
+        ESP_LOGE(TAG, "esp_ota_set_boot_partition failed: %s", esp_err_to_name(err));
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA set boot failed");
         return ESP_FAIL;
     }
 
+    ESP_LOGI(TAG, "OTA successful, written=%d. Rebooting.", written);
     httpd_resp_sendstr(req, "OTA successful. Rebooting.");
     vTaskDelay(pdMS_TO_TICKS(1000));
     esp_restart();

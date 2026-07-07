@@ -4,7 +4,6 @@ idf_component_register(
     REQUIRES
         esp_http_server
         esp_timer
-        esp_https_ota
         app_update
         esp_app_format
         oaos_audio
