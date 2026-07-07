@@ -82,4 +82,9 @@
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/touch_element/libtouch_element.a
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/usb/libusb.a
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_system/liboaos_system.a
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_storage/liboaos_storage.a
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_wifi/liboaos_wifi.a
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_audio/liboaos_audio.a
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_web/liboaos_web.a
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/main/libmain.a

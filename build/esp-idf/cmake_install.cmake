@@ -544,6 +544,31 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_system/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_storage/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_wifi/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_audio/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_web/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/Users/denizuzun/Developer/openaudioos/build/esp-idf/main/cmake_install.cmake")
 endif()
 

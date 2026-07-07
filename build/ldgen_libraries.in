@@ -82,4 +82,9 @@ $<TARGET_FILE:__idf_spiffs>
 $<TARGET_FILE:__idf_touch_element>
 $<TARGET_FILE:__idf_usb>
 $<TARGET_FILE:__idf_wifi_provisioning>
+$<TARGET_FILE:__idf_oaos_system>
+$<TARGET_FILE:__idf_oaos_storage>
+$<TARGET_FILE:__idf_oaos_wifi>
+$<TARGET_FILE:__idf_oaos_audio>
+$<TARGET_FILE:__idf_oaos_web>
 $<TARGET_FILE:__idf_main>
