@@ -1,13 +1,13 @@
 # Target labels
  bootloader
 # Source files and their labels
-/Users/denizuzun/Downloads/OpenAudioOS-M0/build/CMakeFiles/bootloader
-/Users/denizuzun/Downloads/OpenAudioOS-M0/build/CMakeFiles/bootloader.rule
-/Users/denizuzun/Downloads/OpenAudioOS-M0/build/CMakeFiles/bootloader-complete.rule
-/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
-/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
-/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
-/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
-/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
-/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
-/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
+/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/bootloader
+/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/bootloader.rule
+/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/bootloader-complete.rule
+/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

@@ -10,18 +10,18 @@ if(NOT EXISTS "/Users/denizuzun/esp/esp-idf/components/bootloader/subproject")
   file(MAKE_DIRECTORY "/Users/denizuzun/esp/esp-idf/components/bootloader/subproject")
 endif()
 file(MAKE_DIRECTORY
-  "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader"
-  "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix"
-  "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/tmp"
-  "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp"
-  "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src"
-  "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp"
+  "/Users/denizuzun/Developer/openaudioos/build/bootloader"
+  "/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix"
+  "/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/tmp"
+  "/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp"
+  "/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src"
+  "/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()

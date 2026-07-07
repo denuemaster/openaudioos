@@ -2,34 +2,34 @@
 	"sources" : 
 	[
 		{
-			"file" : "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/CMakeFiles/bootloader"
+			"file" : "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/bootloader"
 		},
 		{
-			"file" : "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/CMakeFiles/bootloader.rule"
+			"file" : "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/bootloader.rule"
 		},
 		{
-			"file" : "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/CMakeFiles/bootloader-complete.rule"
+			"file" : "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/bootloader-complete.rule"
 		},
 		{
-			"file" : "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
+			"file" : "/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
 		},
 		{
-			"file" : "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
+			"file" : "/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
 		},
 		{
-			"file" : "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
+			"file" : "/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
 		},
 		{
-			"file" : "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
+			"file" : "/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
 		},
 		{
-			"file" : "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
+			"file" : "/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
 		},
 		{
-			"file" : "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
+			"file" : "/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
 		},
 		{
-			"file" : "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
+			"file" : "/Users/denizuzun/Developer/openaudioos/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
 		}
 	],
 	"target" : 

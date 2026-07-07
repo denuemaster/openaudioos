@@ -147,6 +147,6 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/Users/denizuzun/Downloads/OpenAudioOS-M0/build/esp-idf/mbedtls/mbedtls/include/install_local_manifest.txt"
+  file(WRITE "/Users/denizuzun/Developer/openaudioos/build/esp-idf/mbedtls/mbedtls/include/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

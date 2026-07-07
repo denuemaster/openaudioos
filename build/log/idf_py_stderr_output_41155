@@ -1,9 +1,0 @@
-
-A fatal error occurred: Failed to write to target RAM (result was 0107: Checksum error)
-CMake Error at run_serial_tool.cmake:66 (message):
-  
-  /Users/denizuzun/.espressif/python_env/idf5.3_py3.9_env/bin/python;;/Users/denizuzun/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32s3
-  failed.
-
-
-
