@@ -857,6 +857,13 @@
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_audio/CMakeFiles/install.dir
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_audio/CMakeFiles/install/local.dir
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_audio/CMakeFiles/install/strip.dir
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_adapter/CMakeFiles/__idf_oaos_airplay_adapter.dir
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_adapter/CMakeFiles/edit_cache.dir
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_adapter/CMakeFiles/rebuild_cache.dir
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_adapter/CMakeFiles/list_install_components.dir
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_adapter/CMakeFiles/install.dir
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_adapter/CMakeFiles/install/local.dir
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_adapter/CMakeFiles/install/strip.dir
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/espressif__mdns/CMakeFiles/__idf_espressif__mdns.dir
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/espressif__mdns/CMakeFiles/edit_cache.dir
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/espressif__mdns/CMakeFiles/rebuild_cache.dir

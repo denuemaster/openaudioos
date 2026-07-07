@@ -8,4 +8,5 @@ idf_component_register(
         oaos_web
         oaos_audio
         oaos_airplay
+        oaos_airplay_adapter
 )

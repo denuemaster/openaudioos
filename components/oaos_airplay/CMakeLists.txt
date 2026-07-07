@@ -3,6 +3,7 @@ idf_component_register(
     INCLUDE_DIRS "include"
     REQUIRES
         oaos_audio
+        oaos_airplay_adapter
         esp_timer
         mdns
         lwip
