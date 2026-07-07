@@ -27,8 +27,8 @@ Important: Use real ESP32 GND to PCM5102A GND. Do not use a GPIO as ground.
 
 ## WiFi
 
-SSID: `WiFi2`  
-Password: `thermi555`
+SSID: ``  
+Password: ``
 
 ## Build
 
