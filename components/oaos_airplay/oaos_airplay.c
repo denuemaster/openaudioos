@@ -38,7 +38,9 @@ static uint32_t sessions_started = 0;
 static uint32_t rtsp_connections = 0;
 static uint32_t rtsp_requests = 0;
 static uint32_t rtsp_options = 0;
+static uint32_t rtsp_fp_setup = 0;
 static uint32_t rtsp_info = 0;
+static char last_fp_setup_summary[160] = "none";
 static uint32_t rtsp_announce = 0;
 static uint32_t rtsp_setup = 0;
 static uint32_t rtsp_record = 0;
@@ -158,7 +160,7 @@ static esp_err_t start_mdns_airplay(void)
 
     ESP_LOGI(TAG, "RAOP mDNS advertised as '%s' on port %d", raop_instance, AIRPLAY_RTSP_PORT);
     ESP_LOGI(TAG, "AirPlay mDNS advertised as '%s' deviceid=%s on port %d", device_name, device_id, AIRPLAY_RTSP_PORT);
-    ESP_LOGW(TAG, "M0.11 fixes RTSP stack usage. Still not playable AirPlay audio.");
+    ESP_LOGW(TAG, "M0.12 fixes RTSP stack usage. Still not playable AirPlay audio.");
     return ESP_OK;
 }
 
@@ -188,6 +190,45 @@ static void get_cseq(const char *request, char *out, size_t out_len)
     out[i] = 0;
 }
 
+static int get_content_length(const char *request)
+{
+    const char *p = find_header_case(request, "Content-Length:");
+    if (!p) return 0;
+    while (*p == ' ' || *p == '\t') p++;
+    return atoi(p);
+}
+
+static const char *get_body_ptr(const char *request)
+{
+    const char *p = strstr(request, "\r\n\r\n");
+    if (!p) return NULL;
+    return p + 4;
+}
+
+static void summarize_fp_setup(const char *request)
+{
+    int content_length = get_content_length(request);
+    const char *body = get_body_ptr(request);
+    char hex[96] = {0};
+
+    if (body && content_length > 0) {
+        int n = content_length < 16 ? content_length : 16;
+        for (int i = 0; i < n; i++) {
+            char b[4];
+            snprintf(b, sizeof(b), "%02X", (unsigned char)body[i]);
+            strlcat(hex, b, sizeof(hex));
+            if (i + 1 < n) strlcat(hex, " ", sizeof(hex));
+        }
+    } else {
+        strlcpy(hex, "no-body", sizeof(hex));
+    }
+
+    snprintf(last_fp_setup_summary, sizeof(last_fp_setup_summary),
+             "content_length=%d first_bytes=%s", content_length, hex);
+
+    ESP_LOGI(TAG, "FP-SETUP summary: %s", last_fp_setup_summary);
+}
+
 static void get_method(const char *request, char *out, size_t out_len)
 {
     size_t i = 0;
@@ -212,7 +253,7 @@ static void send_rtsp_response(int client, const char *cseq, const char *code, c
     int len = snprintf(response, RTSP_RESPONSE_BUFFER_SIZE,
              "RTSP/1.0 %s\r\n"
              "CSeq: %s\r\n"
-             "Server: OpenAudioOS-M0.11\r\n"
+             "Server: OpenAudioOS-M0.12\r\n"
              "%s"
              "Content-Length: %u\r\n"
              "\r\n"
@@ -274,6 +315,25 @@ static void handle_rtsp_request(int client, const char *rx)
         send_rtsp_response(client, cseq, "200 OK",
                            "Content-Type: application/json\r\n",
                            body);
+        return;
+    }
+
+    if ((strcasecmp(method, "POST") == 0 && strstr(rx, "/fp-setup")) || strstr(rx, "POST /fp-setup")) {
+        xSemaphoreTake(ap_mutex, portMAX_DELAY);
+        rtsp_fp_setup++;
+        xSemaphoreGive(ap_mutex);
+
+        summarize_fp_setup(rx);
+
+        /*
+         * M0.12 intentionally does NOT implement FairPlay.
+         * We return 200 OK with an empty octet-stream body to observe the next iOS request
+         * without crashing or closing the session immediately.
+         * A real implementation must replace this with proper FairPlay M1/M2 handling.
+         */
+        send_rtsp_response(client, cseq, "200 OK",
+                           "Content-Type: application/octet-stream\r\n",
+                           "");
         return;
     }
 
@@ -480,8 +540,8 @@ esp_err_t oaos_airplay_init(void)
 
     start_time_us = esp_timer_get_time();
 
-    ESP_LOGI(TAG, "AirPlay/RAOP discovery foundation M0.11 initialized");
-    ESP_LOGW(TAG, "M0.11 fixes RTSP stack overflow. It is not playable AirPlay audio yet.");
+    ESP_LOGI(TAG, "AirPlay/RAOP discovery foundation M0.12 initialized");
+    ESP_LOGW(TAG, "M0.12 fixes RTSP stack overflow. It is not playable AirPlay audio yet.");
 
     esp_err_t err = start_mdns_airplay();
     if (err != ESP_OK) {
@@ -559,6 +619,7 @@ oaos_airplay_status_t oaos_airplay_get_status(void)
     s.rtsp_connections = rtsp_connections;
     s.rtsp_requests = rtsp_requests;
     s.rtsp_options = rtsp_options;
+    s.rtsp_fp_setup = rtsp_fp_setup;
     s.rtsp_info = rtsp_info;
     s.rtsp_announce = rtsp_announce;
     s.rtsp_setup = rtsp_setup;
@@ -569,7 +630,8 @@ oaos_airplay_status_t oaos_airplay_get_status(void)
     s.errors = errors;
     s.device_name = device_name;
     s.raop_instance = raop_instance;
-    s.protocol_note = "M0.11: stack-safe RTSP OPTIONS/info placeholders; no playable AirPlay audio yet";
+    s.last_fp_setup_summary = last_fp_setup_summary;
+    s.protocol_note = "M0.12: stack-safe RTSP OPTIONS/info and /fp-setup placeholder; no playable AirPlay audio yet";
     xSemaphoreGive(ap_mutex);
 
     return s;

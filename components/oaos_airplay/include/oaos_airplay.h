@@ -26,6 +26,7 @@ typedef struct {
     uint32_t rtsp_connections;
     uint32_t rtsp_requests;
     uint32_t rtsp_options;
+    uint32_t rtsp_fp_setup;
     uint32_t rtsp_info;
     uint32_t rtsp_announce;
     uint32_t rtsp_setup;
@@ -36,6 +37,7 @@ typedef struct {
     uint32_t errors;
     const char *device_name;
     const char *raop_instance;
+    const char *last_fp_setup_summary;
     const char *protocol_note;
 } oaos_airplay_status_t;
 
