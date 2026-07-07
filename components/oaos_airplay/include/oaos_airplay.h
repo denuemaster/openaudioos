@@ -14,10 +14,15 @@ typedef enum {
 
 typedef struct {
     bool enabled;
+    bool mdns_started;
+    bool rtsp_listener_started;
+    int rtsp_port;
     oaos_airplay_state_t state;
     const char *state_name;
     uint64_t uptime_ms;
     uint32_t sessions_started;
+    uint32_t rtsp_connections;
+    uint32_t rtsp_requests;
     uint32_t packets_received;
     uint32_t frames_pushed;
     uint32_t errors;

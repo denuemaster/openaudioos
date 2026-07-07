@@ -8,7 +8,7 @@ events:
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/git_submodules.cmake:1 (find_package)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/idf.cmake:41 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:29 (include)"
-      - "CMakeLists.txt:6 (include)"
+      - "CMakeLists.txt:3 (include)"
     mode: "program"
     variable: "GIT_EXECUTABLE"
     description: "Git command line client"
@@ -66,6 +66,32 @@ events:
     found: "/opt/homebrew/bin/git"
     search_context:
       ENV{PATH}:
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
         - "/Users/denizuzun/esp/esp-idf/components/app_update"
@@ -290,7 +316,7 @@ events:
     backtrace:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_UNAME"
     description: "Path to a program."
@@ -352,6 +378,32 @@ events:
     found: "/usr/bin/uname"
     search_context:
       ENV{PATH}:
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
         - "/Users/denizuzun/esp/esp-idf/components/app_update"
@@ -576,7 +628,7 @@ events:
     backtrace:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineSystem.cmake:207 (message)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     message: |
       The target system is: Generic -  - 
       The host system is: Darwin - 25.5.0 - arm64
@@ -585,7 +637,7 @@ events:
     backtrace:
       - "/opt/homebrew/share/cmake/Modules/CMakeNinjaFindMake.cmake:5 (find_program)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_MAKE_PROGRAM"
     description: "Program used to build from build.ninja files."
@@ -672,6 +724,32 @@ events:
     found: "/opt/homebrew/bin/ninja"
     search_context:
       ENV{PATH}:
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
         - "/Users/denizuzun/esp/esp-idf/components/app_update"
@@ -897,7 +975,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompiler.cmake:115 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:67 (_cmake_find_compiler_path)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_C_COMPILER_WITH_PATH"
     description: "Path to a program."
@@ -946,6 +1024,32 @@ events:
     found: "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc"
     search_context:
       ENV{PATH}:
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
         - "/Users/denizuzun/esp/esp-idf/components/app_update"
@@ -1174,7 +1278,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "file"
     variable: "src_in"
     description: "Path to a file."
@@ -1195,6 +1299,32 @@ events:
     found: "/opt/homebrew/share/cmake/Modules/CMakeCCompilerId.c.in"
     search_context:
       ENV{PATH}:
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
         - "/Users/denizuzun/esp/esp-idf/components/app_update"
@@ -1421,7 +1551,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     message: |
       Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
       Compiler: /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc 
@@ -1443,7 +1573,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_AR"
     description: "Path to a program."
@@ -1514,6 +1644,32 @@ events:
         - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/opt/homebrew/opt/python@3.11/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
@@ -1713,7 +1869,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_RANLIB"
     description: "Path to a program."
@@ -1784,6 +1940,32 @@ events:
         - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/opt/homebrew/opt/python@3.11/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
@@ -1983,7 +2165,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_STRIP"
     description: "Path to a program."
@@ -2054,6 +2236,32 @@ events:
         - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/opt/homebrew/opt/python@3.11/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
@@ -2253,7 +2461,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_LINKER"
     description: "Path to a program."
@@ -2324,6 +2532,32 @@ events:
         - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/opt/homebrew/opt/python@3.11/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
@@ -2523,7 +2757,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_NM"
     description: "Path to a program."
@@ -2594,6 +2828,32 @@ events:
         - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/opt/homebrew/opt/python@3.11/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
@@ -2793,7 +3053,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_OBJDUMP"
     description: "Path to a program."
@@ -2864,6 +3124,32 @@ events:
         - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/opt/homebrew/opt/python@3.11/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
@@ -3063,7 +3349,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_OBJCOPY"
     description: "Path to a program."
@@ -3134,6 +3420,32 @@ events:
         - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/opt/homebrew/opt/python@3.11/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
@@ -3333,7 +3645,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_READELF"
     description: "Path to a program."
@@ -3404,6 +3716,32 @@ events:
         - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/opt/homebrew/opt/python@3.11/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
@@ -3603,7 +3941,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_DLLTOOL"
     description: "Path to a program."
@@ -3727,6 +4065,32 @@ events:
         - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/opt/homebrew/opt/python@3.11/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
@@ -3926,7 +4290,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_ADDR2LINE"
     description: "Path to a program."
@@ -3997,6 +4361,32 @@ events:
         - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
         - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/opt/homebrew/opt/python@3.11/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
@@ -4196,7 +4586,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_TAPI"
     description: "Path to a program."
@@ -4294,6 +4684,32 @@ events:
     found: false
     search_context:
       ENV{PATH}:
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
         - "/Users/denizuzun/esp/esp-idf/components/app_update"
@@ -4519,7 +4935,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_C_COMPILER_AR"
     description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
@@ -4645,6 +5061,32 @@ events:
     found: "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc-ar"
     search_context:
       ENV{PATH}:
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
         - "/Users/denizuzun/esp/esp-idf/components/app_update"
@@ -4870,7 +5312,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_C_COMPILER_RANLIB"
     description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
@@ -4996,6 +5438,32 @@ events:
     found: "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc-ranlib"
     search_context:
       ENV{PATH}:
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
         - "/Users/denizuzun/esp/esp-idf/components/app_update"
@@ -5221,7 +5689,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompiler.cmake:115 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:71 (_cmake_find_compiler_path)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_CXX_COMPILER_WITH_PATH"
     description: "Path to a program."
@@ -5270,6 +5738,32 @@ events:
     found: "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-g++"
     search_context:
       ENV{PATH}:
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
         - "/Users/denizuzun/esp/esp-idf/components/app_update"
@@ -5498,7 +5992,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "file"
     variable: "src_in"
     description: "Path to a file."
@@ -5519,6 +6013,32 @@ events:
     found: "/opt/homebrew/share/cmake/Modules/CMakeCXXCompilerId.cpp.in"
     search_context:
       ENV{PATH}:
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
         - "/Users/denizuzun/esp/esp-idf/components/app_update"
@@ -5745,7 +6265,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     message: |
       Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
       Compiler: /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-g++ 
@@ -5767,7 +6287,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_CXX_COMPILER_AR"
     description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
@@ -5893,6 +6413,32 @@ events:
     found: "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc-ar"
     search_context:
       ENV{PATH}:
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
         - "/Users/denizuzun/esp/esp-idf/components/app_update"
@@ -6118,7 +6664,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_CXX_COMPILER_RANLIB"
     description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
@@ -6244,6 +6790,32 @@ events:
     found: "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc-ranlib"
     search_context:
       ENV{PATH}:
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
         - "/Users/denizuzun/esp/esp-idf/components/app_update"
@@ -6469,7 +7041,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompiler.cmake:115 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineASMCompiler.cmake:64 (_cmake_find_compiler_path)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_ASM_COMPILER_WITH_PATH"
     description: "Path to a program."
@@ -6518,6 +7090,32 @@ events:
     found: "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc"
     search_context:
       ENV{PATH}:
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
         - "/Users/denizuzun/esp/esp-idf/components/app_update"
@@ -6743,7 +7341,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1296 (message)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineASMCompiler.cmake:170 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     message: |
       Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
       xtensa-esp-elf-gcc (crosstool-NG esp-13.2.0_20240530) 13.2.0
@@ -6757,7 +7355,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineASMCompiler.cmake:268 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_ASM_COMPILER_AR"
     description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
@@ -6857,6 +7455,32 @@ events:
     found: "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc-ar"
     search_context:
       ENV{PATH}:
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
         - "/Users/denizuzun/esp/esp-idf/components/app_update"
@@ -7082,7 +7706,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineASMCompiler.cmake:268 (include)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     mode: "program"
     variable: "CMAKE_ASM_COMPILER_RANLIB"
     description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
@@ -7182,6 +7806,32 @@ events:
     found: "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc-ranlib"
     search_context:
       ENV{PATH}:
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
+        - "/Users/denizuzun/esp/esp-idf/components/partition_table"
+        - "/Users/denizuzun/esp/esp-idf/components/app_update"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin"
+        - "/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin"
+        - "/Users/denizuzun/.espressif/tools/openocd-esp32/v0.12.0-esp32-20241016/openocd-esp32/bin"
         - "/Users/denizuzun/esp/esp-idf/components/espcoredump"
         - "/Users/denizuzun/esp/esp-idf/components/partition_table"
         - "/Users/denizuzun/esp/esp-idf/components/app_update"
@@ -7407,12 +8057,12 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
       - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-aOwYoK"
-      binary: "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-aOwYoK"
+      source: "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-95ptJ9"
+      binary: "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-95ptJ9"
     cmakeVariables:
       CMAKE_CXX_STDLIB_MODULES_JSON: ""
       CMAKE_C_FLAGS: "-mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy"
@@ -7423,10 +8073,10 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-aOwYoK'
+        Change Dir: '/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-95ptJ9'
         
-        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_d7059
-        [1/2] /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc   -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy    -v -o CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.obj -c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_53ba5
+        [1/2] /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc   -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy    -v -o CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.obj -c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp-elf-gcc
         Target: xtensa-esp-elf
@@ -7434,8 +8084,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 13.2.0 (crosstool-NG esp-13.2.0_20240530) 
-        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_d7059.dir/'
-         /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/cc1 -quiet -v -imultilib esp32s3 -iprefix /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/ -isysroot /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_d7059.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mdynconfig=xtensa_esp32s3.so -mlongcalls -version -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -o /var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccHM1z13.s
+        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_53ba5.dir/'
+         /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/cc1 -quiet -v -imultilib esp32s3 -iprefix /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/ -isysroot /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_53ba5.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mdynconfig=xtensa_esp32s3.so -mlongcalls -version -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -o /var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//cctDkfxi.s
         GNU C17 (crosstool-NG esp-13.2.0_20240530) version 13.2.0 (xtensa-esp-elf)
         	compiled by GNU C version Apple LLVM 13.0.0 (clang-1300.0.27.3), GMP version 6.2.1, MPFR version 4.2.1, MPC version 1.2.1, isl version isl-0.26-GMP
         
@@ -7452,12 +8102,12 @@ events:
          /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/include
         End of search list.
         Compiler executable checksum: cd92dc247db319dcac4122073faca0c1
-        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_d7059.dir/'
-         /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/as --traditional-format --longcalls --dynconfig=xtensa_esp32s3.so -o CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.obj /var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccHM1z13.s
+        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_53ba5.dir/'
+         /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/as --traditional-format --longcalls --dynconfig=xtensa_esp32s3.so -o CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.obj /var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//cctDkfxi.s
         COMPILER_PATH=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/
         LIBRARY_PATH=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib/
-        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.'
-        [2/2] : && /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -v CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.obj -o cmTC_d7059   && :
+        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.'
+        [2/2] : && /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -v CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.obj -o cmTC_53ba5   && :
         Using built-in specs.
         COLLECT_GCC=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp-elf-gcc
         COLLECT_LTO_WRAPPER=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/lto-wrapper
@@ -7468,9 +8118,9 @@ events:
         gcc version 13.2.0 (crosstool-NG esp-13.2.0_20240530) 
         COMPILER_PATH=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/
         LIBRARY_PATH=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib/
-        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'cmTC_d7059' '-dumpdir' 'cmTC_d7059.'
-         /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/collect2 -plugin /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/liblto_plugin.so -plugin-opt=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/lto-wrapper -plugin-opt=-fresolution=/var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccSuD6WH.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf --dynconfig=xtensa_esp32s3.so -o cmTC_d7059 /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/crt0.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crti.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtbegin.o -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.obj -lgcc -lc -lnosys -lc -lgcc /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtend.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtn.o
-        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'cmTC_d7059' '-dumpdir' 'cmTC_d7059.'
+        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'cmTC_53ba5' '-dumpdir' 'cmTC_53ba5.'
+         /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/collect2 -plugin /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/liblto_plugin.so -plugin-opt=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/lto-wrapper -plugin-opt=-fresolution=/var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccJz7Xdd.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf --dynconfig=xtensa_esp32s3.so -o cmTC_53ba5 /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/crt0.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crti.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtbegin.o -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.obj -lgcc -lc -lnosys -lc -lgcc /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtend.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtn.o
+        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'cmTC_53ba5' '-dumpdir' 'cmTC_53ba5.'
         
       exitCode: 0
   -
@@ -7479,7 +8129,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
       - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     message: |
       Parsed C implicit include dir info: rv=done
         found start of include info
@@ -7500,15 +8150,15 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
       - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     message: |
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-aOwYoK']
+        ignore line: [Change Dir: '/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-95ptJ9']
         ignore line: []
-        ignore line: [Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_d7059]
-        ignore line: [[1/2] /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc   -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy    -v -o CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.obj -c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_53ba5]
+        ignore line: [[1/2] /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc   -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy    -v -o CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.obj -c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp-elf-gcc]
         ignore line: [Target: xtensa-esp-elf]
@@ -7516,8 +8166,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 13.2.0 (crosstool-NG esp-13.2.0_20240530) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_d7059.dir/']
-        ignore line: [ /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/cc1 -quiet -v -imultilib esp32s3 -iprefix /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/ -isysroot /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_d7059.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mdynconfig=xtensa_esp32s3.so -mlongcalls -version -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -o /var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccHM1z13.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_53ba5.dir/']
+        ignore line: [ /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/cc1 -quiet -v -imultilib esp32s3 -iprefix /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/ -isysroot /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_53ba5.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mdynconfig=xtensa_esp32s3.so -mlongcalls -version -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -o /var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//cctDkfxi.s]
         ignore line: [GNU C17 (crosstool-NG esp-13.2.0_20240530) version 13.2.0 (xtensa-esp-elf)]
         ignore line: [	compiled by GNU C version Apple LLVM 13.0.0 (clang-1300.0.27.3)  GMP version 6.2.1  MPFR version 4.2.1  MPC version 1.2.1  isl version isl-0.26-GMP]
         ignore line: []
@@ -7534,12 +8184,12 @@ events:
         ignore line: [ /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: cd92dc247db319dcac4122073faca0c1]
-        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_d7059.dir/']
-        ignore line: [ /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/as --traditional-format --longcalls --dynconfig=xtensa_esp32s3.so -o CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.obj /var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccHM1z13.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_53ba5.dir/']
+        ignore line: [ /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/as --traditional-format --longcalls --dynconfig=xtensa_esp32s3.so -o CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.obj /var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//cctDkfxi.s]
         ignore line: [COMPILER_PATH=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/]
         ignore line: [LIBRARY_PATH=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.']
-        ignore line: [[2/2] : && /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -v CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.obj -o cmTC_d7059   && :]
+        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.']
+        ignore line: [[2/2] : && /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -v CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.obj -o cmTC_53ba5   && :]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp-elf-gcc]
         ignore line: [COLLECT_LTO_WRAPPER=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/lto-wrapper]
@@ -7550,13 +8200,13 @@ events:
         ignore line: [gcc version 13.2.0 (crosstool-NG esp-13.2.0_20240530) ]
         ignore line: [COMPILER_PATH=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/]
         ignore line: [LIBRARY_PATH=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'cmTC_d7059' '-dumpdir' 'cmTC_d7059.']
-        link line: [ /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/collect2 -plugin /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/liblto_plugin.so -plugin-opt=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/lto-wrapper -plugin-opt=-fresolution=/var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccSuD6WH.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf --dynconfig=xtensa_esp32s3.so -o cmTC_d7059 /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/crt0.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crti.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtbegin.o -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.obj -lgcc -lc -lnosys -lc -lgcc /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtend.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'cmTC_53ba5' '-dumpdir' 'cmTC_53ba5.']
+        link line: [ /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/collect2 -plugin /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/liblto_plugin.so -plugin-opt=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/lto-wrapper -plugin-opt=-fresolution=/var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccJz7Xdd.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf --dynconfig=xtensa_esp32s3.so -o cmTC_53ba5 /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/crt0.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crti.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtbegin.o -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.obj -lgcc -lc -lnosys -lc -lgcc /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtend.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtn.o]
           arg [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccSuD6WH.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccJz7Xdd.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
           arg [-plugin-opt=-pass-through=-lnosys] ==> ignore
@@ -7565,7 +8215,7 @@ events:
           arg [--sysroot=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf] ==> ignore
           arg [--dynconfig=xtensa_esp32s3.so] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_d7059] ==> ignore
+          arg [cmTC_53ba5] ==> ignore
           arg [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/crt0.o] ==> obj [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/crt0.o]
           arg [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crti.o] ==> obj [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crti.o]
           arg [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtbegin.o] ==> obj [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtbegin.o]
@@ -7577,7 +8227,7 @@ events:
           arg [-L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib] ==> dir [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib]
           arg [-L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib] ==> dir [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib]
           arg [-L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib] ==> dir [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib]
-          arg [CMakeFiles/cmTC_d7059.dir/CMakeCCompilerABI.c.obj] ==> ignore
+          arg [CMakeFiles/cmTC_53ba5.dir/CMakeCCompilerABI.c.obj] ==> ignore
           arg [-lgcc] ==> lib [gcc]
           arg [-lc] ==> lib [c]
           arg [-lnosys] ==> lib [nosys]
@@ -7585,7 +8235,7 @@ events:
           arg [-lgcc] ==> lib [gcc]
           arg [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtend.o] ==> obj [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtend.o]
           arg [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtn.o] ==> obj [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtn.o]
-        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'cmTC_d7059' '-dumpdir' 'cmTC_d7059.']
+        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'cmTC_53ba5' '-dumpdir' 'cmTC_53ba5.']
         ignore line: []
         ignore line: []
         collapse obj [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/crt0.o] ==> [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/lib/esp32s3/crt0.o]
@@ -7613,12 +8263,12 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
       - "/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-usamqO"
-      binary: "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-usamqO"
+      source: "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-Aoplmq"
+      binary: "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-Aoplmq"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy"
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -7630,10 +8280,10 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-usamqO'
+        Change Dir: '/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-Aoplmq'
         
-        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_37622
-        [1/2] /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-g++   -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy    -v -o CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.obj -c /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_c52e7
+        [1/2] /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-g++   -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy    -v -o CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.obj -c /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
         Using built-in specs.
         COLLECT_GCC=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp-elf-g++
         Target: xtensa-esp-elf
@@ -7641,8 +8291,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 13.2.0 (crosstool-NG esp-13.2.0_20240530) 
-        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_37622.dir/'
-         /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/cc1plus -quiet -v -imultilib esp32s3 -iprefix /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/ -isysroot /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_37622.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mdynconfig=xtensa_esp32s3.so -mlongcalls -version -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -o /var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//cctsMOrC.s
+        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_c52e7.dir/'
+         /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/cc1plus -quiet -v -imultilib esp32s3 -iprefix /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/ -isysroot /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_c52e7.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mdynconfig=xtensa_esp32s3.so -mlongcalls -version -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -o /var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccGKBErU.s
         GNU C++17 (crosstool-NG esp-13.2.0_20240530) version 13.2.0 (xtensa-esp-elf)
         	compiled by GNU C version Apple LLVM 13.0.0 (clang-1300.0.27.3), GMP version 6.2.1, MPFR version 4.2.1, MPC version 1.2.1, isl version isl-0.26-GMP
         
@@ -7665,12 +8315,12 @@ events:
          /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/include
         End of search list.
         Compiler executable checksum: f60983592ff8f2a0bf36f0d3e34fcff5
-        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_37622.dir/'
-         /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/as --traditional-format --longcalls --dynconfig=xtensa_esp32s3.so -o CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.obj /var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//cctsMOrC.s
+        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_c52e7.dir/'
+         /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/as --traditional-format --longcalls --dynconfig=xtensa_esp32s3.so -o CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.obj /var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccGKBErU.s
         COMPILER_PATH=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/
         LIBRARY_PATH=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib/
-        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.'
-        [2/2] : && /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-g++ -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -v CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_37622   && :
+        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.'
+        [2/2] : && /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-g++ -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -v CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_c52e7   && :
         Using built-in specs.
         COLLECT_GCC=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp-elf-g++
         COLLECT_LTO_WRAPPER=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/lto-wrapper
@@ -7681,9 +8331,9 @@ events:
         gcc version 13.2.0 (crosstool-NG esp-13.2.0_20240530) 
         COMPILER_PATH=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/
         LIBRARY_PATH=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib/
-        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'cmTC_37622' '-dumpdir' 'cmTC_37622.'
-         /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/collect2 -plugin /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/liblto_plugin.so -plugin-opt=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/lto-wrapper -plugin-opt=-fresolution=/var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccs4tuPS.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf --dynconfig=xtensa_esp32s3.so -o cmTC_37622 /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/crt0.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crti.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtbegin.o -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgcc -lc -lnosys -lc -lgcc /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtend.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtn.o
-        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'cmTC_37622' '-dumpdir' 'cmTC_37622.'
+        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'cmTC_c52e7' '-dumpdir' 'cmTC_c52e7.'
+         /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/collect2 -plugin /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/liblto_plugin.so -plugin-opt=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/lto-wrapper -plugin-opt=-fresolution=/var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//cc91vltl.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf --dynconfig=xtensa_esp32s3.so -o cmTC_c52e7 /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/crt0.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crti.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtbegin.o -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgcc -lc -lnosys -lc -lgcc /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtend.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtn.o
+        COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'cmTC_c52e7' '-dumpdir' 'cmTC_c52e7.'
         
       exitCode: 0
   -
@@ -7692,7 +8342,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
       - "/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     message: |
       Parsed CXX implicit include dir info: rv=done
         found start of include info
@@ -7719,15 +8369,15 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
       - "/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "/Users/denizuzun/esp/esp-idf/tools/cmake/project.cmake:564 (__project)"
-      - "CMakeLists.txt:7 (project)"
+      - "CMakeLists.txt:4 (project)"
     message: |
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-usamqO']
+        ignore line: [Change Dir: '/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-Aoplmq']
         ignore line: []
-        ignore line: [Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_37622]
-        ignore line: [[1/2] /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-g++   -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy    -v -o CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.obj -c /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_c52e7]
+        ignore line: [[1/2] /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-g++   -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy    -v -o CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.obj -c /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp-elf-g++]
         ignore line: [Target: xtensa-esp-elf]
@@ -7735,8 +8385,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 13.2.0 (crosstool-NG esp-13.2.0_20240530) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_37622.dir/']
-        ignore line: [ /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/cc1plus -quiet -v -imultilib esp32s3 -iprefix /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/ -isysroot /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_37622.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mdynconfig=xtensa_esp32s3.so -mlongcalls -version -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -o /var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//cctsMOrC.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_c52e7.dir/']
+        ignore line: [ /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/cc1plus -quiet -v -imultilib esp32s3 -iprefix /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/ -isysroot /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_c52e7.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mdynconfig=xtensa_esp32s3.so -mlongcalls -version -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -o /var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccGKBErU.s]
         ignore line: [GNU C++17 (crosstool-NG esp-13.2.0_20240530) version 13.2.0 (xtensa-esp-elf)]
         ignore line: [	compiled by GNU C version Apple LLVM 13.0.0 (clang-1300.0.27.3)  GMP version 6.2.1  MPFR version 4.2.1  MPC version 1.2.1  isl version isl-0.26-GMP]
         ignore line: []
@@ -7759,12 +8409,12 @@ events:
         ignore line: [ /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: f60983592ff8f2a0bf36f0d3e34fcff5]
-        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_37622.dir/']
-        ignore line: [ /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/as --traditional-format --longcalls --dynconfig=xtensa_esp32s3.so -o CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.obj /var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//cctsMOrC.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_c52e7.dir/']
+        ignore line: [ /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/as --traditional-format --longcalls --dynconfig=xtensa_esp32s3.so -o CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.obj /var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccGKBErU.s]
         ignore line: [COMPILER_PATH=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/]
         ignore line: [LIBRARY_PATH=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.']
-        ignore line: [[2/2] : && /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-g++ -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -v CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_37622   && :]
+        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-dumpdir' 'CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [[2/2] : && /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-g++ -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -v CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_c52e7   && :]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp-elf-g++]
         ignore line: [COLLECT_LTO_WRAPPER=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/lto-wrapper]
@@ -7775,13 +8425,13 @@ events:
         ignore line: [gcc version 13.2.0 (crosstool-NG esp-13.2.0_20240530) ]
         ignore line: [COMPILER_PATH=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/]
         ignore line: [LIBRARY_PATH=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/esp32s3/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/:/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'cmTC_37622' '-dumpdir' 'cmTC_37622.']
-        link line: [ /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/collect2 -plugin /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/liblto_plugin.so -plugin-opt=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/lto-wrapper -plugin-opt=-fresolution=/var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccs4tuPS.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf --dynconfig=xtensa_esp32s3.so -o cmTC_37622 /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/crt0.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crti.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtbegin.o -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgcc -lc -lnosys -lc -lgcc /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtend.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'cmTC_c52e7' '-dumpdir' 'cmTC_c52e7.']
+        link line: [ /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/collect2 -plugin /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/liblto_plugin.so -plugin-opt=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/lto-wrapper -plugin-opt=-fresolution=/var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//cc91vltl.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf --dynconfig=xtensa_esp32s3.so -o cmTC_c52e7 /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/crt0.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crti.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtbegin.o -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib/esp32s3 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0 -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib -L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgcc -lc -lnosys -lc -lgcc /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtend.o /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtn.o]
           arg [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../libexec/gcc/xtensa-esp-elf/13.2.0/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//ccs4tuPS.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/var/folders/gq/cw3ksbkx75l4zv2qj055v93w0000gn/T//cc91vltl.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
           arg [-plugin-opt=-pass-through=-lnosys] ==> ignore
@@ -7790,7 +8440,7 @@ events:
           arg [--sysroot=/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf] ==> ignore
           arg [--dynconfig=xtensa_esp32s3.so] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_37622] ==> ignore
+          arg [cmTC_c52e7] ==> ignore
           arg [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/crt0.o] ==> obj [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/crt0.o]
           arg [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crti.o] ==> obj [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crti.o]
           arg [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtbegin.o] ==> obj [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtbegin.o]
@@ -7802,7 +8452,7 @@ events:
           arg [-L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib] ==> dir [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib]
           arg [-L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib] ==> dir [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/lib]
           arg [-L/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib] ==> dir [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../xtensa-esp-elf/usr/lib]
-          arg [CMakeFiles/cmTC_37622.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
+          arg [CMakeFiles/cmTC_c52e7.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
           arg [-lstdc++] ==> lib [stdc++]
           arg [-lm] ==> lib [m]
           arg [-lgcc] ==> lib [gcc]
@@ -7812,7 +8462,7 @@ events:
           arg [-lgcc] ==> lib [gcc]
           arg [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtend.o] ==> obj [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtend.o]
           arg [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtn.o] ==> obj [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/esp32s3/crtn.o]
-        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'cmTC_37622' '-dumpdir' 'cmTC_37622.']
+        ignore line: [COLLECT_GCC_OPTIONS='-mdynconfig=xtensa_esp32s3.so' '-mlongcalls' '-fno-builtin-memcpy' '-fno-builtin-memset' '-fno-builtin-bzero' '-fno-builtin-stpcpy' '-fno-builtin-strncpy' '-v' '-o' 'cmTC_c52e7' '-dumpdir' 'cmTC_c52e7.']
         ignore line: []
         ignore line: []
         collapse obj [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/lib/esp32s3/crt0.o] ==> [/Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/lib/esp32s3/crt0.o]
@@ -7845,8 +8495,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-zQTAsR"
-      binary: "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-zQTAsR"
+      source: "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-O5Sr2p"
+      binary: "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-O5Sr2p"
     cmakeVariables:
       CMAKE_CXX_STDLIB_MODULES_JSON: ""
       CMAKE_C_FLAGS: "-mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy"
@@ -7857,17 +8507,17 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: '/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-zQTAsR'
+        Change Dir: '/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-O5Sr2p'
         
-        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_45fb4
-        [1/2] /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc -DCMAKE_HAVE_LIBC_PTHREAD  -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -o CMakeFiles/cmTC_45fb4.dir/src.c.obj -c /Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-zQTAsR/src.c
-        [2/2] : && /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy  CMakeFiles/cmTC_45fb4.dir/src.c.obj -o cmTC_45fb4   && :
-        /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/ld: CMakeFiles/cmTC_45fb4.dir/src.c.obj:(.literal+0x18): warning: pthread_exit is not implemented and will always fail
-        /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/ld: CMakeFiles/cmTC_45fb4.dir/src.c.obj:(.literal+0xc): warning: pthread_cancel is not implemented and will always fail
-        /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/ld: CMakeFiles/cmTC_45fb4.dir/src.c.obj:(.literal+0x8): warning: pthread_detach is not implemented and will always fail
-        /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/ld: CMakeFiles/cmTC_45fb4.dir/src.c.obj:(.literal+0x10): warning: pthread_join is not implemented and will always fail
-        /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/ld: CMakeFiles/cmTC_45fb4.dir/src.c.obj:(.literal+0x4): warning: pthread_create is not implemented and will always fail
-        /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/ld: CMakeFiles/cmTC_45fb4.dir/src.c.obj:(.literal+0x14): warning: pthread_atfork is not implemented and will always fail
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_b42a2
+        [1/2] /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc -DCMAKE_HAVE_LIBC_PTHREAD  -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -o CMakeFiles/cmTC_b42a2.dir/src.c.obj -c /Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-O5Sr2p/src.c
+        [2/2] : && /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy  CMakeFiles/cmTC_b42a2.dir/src.c.obj -o cmTC_b42a2   && :
+        /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/ld: CMakeFiles/cmTC_b42a2.dir/src.c.obj:(.literal+0x18): warning: pthread_exit is not implemented and will always fail
+        /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/ld: CMakeFiles/cmTC_b42a2.dir/src.c.obj:(.literal+0xc): warning: pthread_cancel is not implemented and will always fail
+        /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/ld: CMakeFiles/cmTC_b42a2.dir/src.c.obj:(.literal+0x8): warning: pthread_detach is not implemented and will always fail
+        /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/ld: CMakeFiles/cmTC_b42a2.dir/src.c.obj:(.literal+0x10): warning: pthread_join is not implemented and will always fail
+        /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/ld: CMakeFiles/cmTC_b42a2.dir/src.c.obj:(.literal+0x4): warning: pthread_create is not implemented and will always fail
+        /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/../lib/gcc/xtensa-esp-elf/13.2.0/../../../../xtensa-esp-elf/bin/ld: CMakeFiles/cmTC_b42a2.dir/src.c.obj:(.literal+0x14): warning: pthread_atfork is not implemented and will always fail
         
       exitCode: 0
   -
@@ -7880,8 +8530,8 @@ events:
     checks:
       - "Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS"
     directories:
-      source: "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-bHCGbv"
-      binary: "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-bHCGbv"
+      source: "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-KnAmWE"
+      binary: "/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-KnAmWE"
     cmakeVariables:
       CMAKE_CXX_STDLIB_MODULES_JSON: ""
       CMAKE_C_FLAGS: "-mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -Wall -Wextra -Wwrite-strings -Wmissing-prototypes -Wformat=2 -Wno-format-nonliteral -Wvla -Wlogical-op -Wshadow"
@@ -7892,11 +8542,11 @@ events:
       variable: "C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS"
       cached: true
       stdout: |
-        Change Dir: '/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-bHCGbv'
+        Change Dir: '/Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-KnAmWE'
         
-        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_c7e7f
-        [1/2] /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc -DC_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS  -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -Wall -Wextra -Wwrite-strings -Wmissing-prototypes -Wformat=2 -Wno-format-nonliteral -Wvla -Wlogical-op -Wshadow    -Wformat-signedness -o CMakeFiles/cmTC_c7e7f.dir/src.c.obj -c /Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-bHCGbv/src.c
-        [2/2] : && /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -Wall -Wextra -Wwrite-strings -Wmissing-prototypes -Wformat=2 -Wno-format-nonliteral -Wvla -Wlogical-op -Wshadow  CMakeFiles/cmTC_c7e7f.dir/src.c.obj -o cmTC_c7e7f   && :
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_0dc63
+        [1/2] /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc -DC_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS  -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -Wall -Wextra -Wwrite-strings -Wmissing-prototypes -Wformat=2 -Wno-format-nonliteral -Wvla -Wlogical-op -Wshadow    -Wformat-signedness -o CMakeFiles/cmTC_0dc63.dir/src.c.obj -c /Users/denizuzun/Developer/openaudioos/build/CMakeFiles/CMakeScratch/TryCompile-KnAmWE/src.c
+        [2/2] : && /Users/denizuzun/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc -mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -Wall -Wextra -Wwrite-strings -Wmissing-prototypes -Wformat=2 -Wno-format-nonliteral -Wvla -Wlogical-op -Wshadow  CMakeFiles/cmTC_0dc63.dir/src.c.obj -o cmTC_0dc63   && :
         
       exitCode: 0
 ...

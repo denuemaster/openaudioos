@@ -120,6 +120,7 @@
 		"/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_storage/cmake_install.cmake",
 		"/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_wifi/cmake_install.cmake",
 		"/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_audio/cmake_install.cmake",
+		"/Users/denizuzun/Developer/openaudioos/build/esp-idf/espressif__mdns/cmake_install.cmake",
 		"/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay/cmake_install.cmake",
 		"/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_web/cmake_install.cmake",
 		"/Users/denizuzun/Developer/openaudioos/build/esp-idf/main/cmake_install.cmake"

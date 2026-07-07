@@ -4,4 +4,6 @@ idf_component_register(
     REQUIRES
         oaos_audio
         esp_timer
+        mdns
+        lwip
 )
