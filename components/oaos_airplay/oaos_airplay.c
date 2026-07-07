@@ -21,6 +21,8 @@ static const char *TAG = "oaos_airplay";
 
 #define AIRPLAY_PLACEHOLDER_CHUNK_FRAMES 256
 #define AIRPLAY_RTSP_PORT 5000
+#define RTSP_RX_BUFFER_SIZE 4096
+#define RTSP_RESPONSE_BUFFER_SIZE 2048
 
 static SemaphoreHandle_t ap_mutex;
 static bool enabled = true;
@@ -85,9 +87,7 @@ static void build_device_ids(void)
 
 static esp_err_t start_mdns_airplay(void)
 {
-    if (mdns_started) {
-        return ESP_OK;
-    }
+    if (mdns_started) return ESP_OK;
 
     build_device_ids();
 
@@ -100,11 +100,6 @@ static esp_err_t start_mdns_airplay(void)
     mdns_hostname_set("openaudioos");
     mdns_instance_name_set(device_name);
 
-    /*
-     * RAOP TXT records are deliberately more realistic than M0.9.
-     * This still does NOT make us a valid AirPlay receiver.
-     * It only improves discovery credibility.
-     */
     mdns_txt_item_t raop_txt[] = {
         {"txtvers", "1"},
         {"ch", "2"},
@@ -158,15 +153,12 @@ static esp_err_t start_mdns_airplay(void)
     mdns_started = true;
 
     xSemaphoreTake(ap_mutex, portMAX_DELAY);
-    if (enabled && state == OAOS_AIRPLAY_STATE_IDLE) {
-        set_state_locked(OAOS_AIRPLAY_STATE_ADVERTISING);
-    }
+    if (enabled && state == OAOS_AIRPLAY_STATE_IDLE) set_state_locked(OAOS_AIRPLAY_STATE_ADVERTISING);
     xSemaphoreGive(ap_mutex);
 
     ESP_LOGI(TAG, "RAOP mDNS advertised as '%s' on port %d", raop_instance, AIRPLAY_RTSP_PORT);
     ESP_LOGI(TAG, "AirPlay mDNS advertised as '%s' deviceid=%s on port %d", device_name, device_id, AIRPLAY_RTSP_PORT);
-    ESP_LOGW(TAG, "M0.10 still does not implement playable AirPlay audio.");
-
+    ESP_LOGW(TAG, "M0.11 fixes RTSP stack usage. Still not playable AirPlay audio.");
     return ESP_OK;
 }
 
@@ -175,9 +167,7 @@ static const char *find_header_case(const char *request, const char *header)
     size_t header_len = strlen(header);
     const char *p = request;
     while (*p) {
-        if (strncasecmp(p, header, header_len) == 0) {
-            return p + header_len;
-        }
+        if (strncasecmp(p, header, header_len) == 0) return p + header_len;
         const char *next = strstr(p, "\n");
         if (!next) break;
         p = next + 1;
@@ -192,13 +182,9 @@ static void get_cseq(const char *request, char *out, size_t out_len)
         strlcpy(out, "1", out_len);
         return;
     }
-
     while (*p == ' ' || *p == '\t') p++;
-
     size_t i = 0;
-    while (*p && *p != '\r' && *p != '\n' && i + 1 < out_len) {
-        out[i++] = *p++;
-    }
+    while (*p && *p != '\r' && *p != '\n' && i + 1 < out_len) out[i++] = *p++;
     out[i] = 0;
 }
 
@@ -217,11 +203,16 @@ static void send_rtsp_response(int client, const char *cseq, const char *code, c
     if (!body) body = "";
     if (!headers) headers = "";
 
-    char response[2048];
-    snprintf(response, sizeof(response),
+    char *response = heap_caps_malloc(RTSP_RESPONSE_BUFFER_SIZE, MALLOC_CAP_8BIT);
+    if (!response) {
+        ESP_LOGE(TAG, "No memory for RTSP response");
+        return;
+    }
+
+    int len = snprintf(response, RTSP_RESPONSE_BUFFER_SIZE,
              "RTSP/1.0 %s\r\n"
              "CSeq: %s\r\n"
-             "Server: OpenAudioOS-M0.10\r\n"
+             "Server: OpenAudioOS-M0.11\r\n"
              "%s"
              "Content-Length: %u\r\n"
              "\r\n"
@@ -232,7 +223,8 @@ static void send_rtsp_response(int client, const char *cseq, const char *code, c
              (unsigned)strlen(body),
              body);
 
-    send(client, response, strlen(response), 0);
+    if (len > 0) send(client, response, strlen(response), 0);
+    free(response);
 }
 
 static void handle_rtsp_request(int client, const char *rx)
@@ -259,16 +251,12 @@ static void handle_rtsp_request(int client, const char *rx)
         return;
     }
 
-    if (strcasecmp(method, "GET") == 0 || strstr(rx, "GET /info") || strstr(rx, "GET_PARAMETER")) {
+    if (strcasecmp(method, "GET") == 0 || strstr(rx, "GET /info") || strcasecmp(method, "GET_PARAMETER") == 0) {
         xSemaphoreTake(ap_mutex, portMAX_DELAY);
         rtsp_info++;
         xSemaphoreGive(ap_mutex);
 
-        /*
-         * Minimal JSON-ish info. This is not full Apple binary plist /info.
-         * It only helps us observe client behaviour without returning 501 immediately.
-         */
-        char body[768];
+        char body[512];
         snprintf(body, sizeof(body),
                  "{"
                  "\"name\":\"%s\","
@@ -293,10 +281,7 @@ static void handle_rtsp_request(int client, const char *rx)
         xSemaphoreTake(ap_mutex, portMAX_DELAY);
         rtsp_announce++;
         xSemaphoreGive(ap_mutex);
-
-        send_rtsp_response(client, cseq, "501 Not Implemented",
-                           "Content-Type: text/plain\r\n",
-                           "ANNOUNCE is not implemented yet in M0.10.\n");
+        send_rtsp_response(client, cseq, "501 Not Implemented", "Content-Type: text/plain\r\n", "ANNOUNCE not implemented yet.\n");
         return;
     }
 
@@ -304,10 +289,7 @@ static void handle_rtsp_request(int client, const char *rx)
         xSemaphoreTake(ap_mutex, portMAX_DELAY);
         rtsp_setup++;
         xSemaphoreGive(ap_mutex);
-
-        send_rtsp_response(client, cseq, "501 Not Implemented",
-                           "Content-Type: text/plain\r\n",
-                           "SETUP is not implemented yet in M0.10.\n");
+        send_rtsp_response(client, cseq, "501 Not Implemented", "Content-Type: text/plain\r\n", "SETUP not implemented yet.\n");
         return;
     }
 
@@ -315,10 +297,7 @@ static void handle_rtsp_request(int client, const char *rx)
         xSemaphoreTake(ap_mutex, portMAX_DELAY);
         rtsp_record++;
         xSemaphoreGive(ap_mutex);
-
-        send_rtsp_response(client, cseq, "501 Not Implemented",
-                           "Content-Type: text/plain\r\n",
-                           "RECORD is not implemented yet in M0.10.\n");
+        send_rtsp_response(client, cseq, "501 Not Implemented", "Content-Type: text/plain\r\n", "RECORD not implemented yet.\n");
         return;
     }
 
@@ -326,20 +305,26 @@ static void handle_rtsp_request(int client, const char *rx)
         xSemaphoreTake(ap_mutex, portMAX_DELAY);
         rtsp_teardown++;
         xSemaphoreGive(ap_mutex);
-
         send_rtsp_response(client, cseq, "200 OK", NULL, "");
         return;
     }
 
     send_rtsp_response(client, cseq, "501 Not Implemented",
                        "Content-Type: text/plain\r\n",
-                       "This RTSP method is not implemented yet in M0.10.\n");
+                       "RTSP method not implemented yet.\n");
 }
 
 static void rtsp_client_task(void *arg)
 {
     int client = (int)(intptr_t)arg;
-    char rx[2048];
+
+    char *rx = heap_caps_malloc(RTSP_RX_BUFFER_SIZE, MALLOC_CAP_8BIT);
+    if (!rx) {
+        ESP_LOGE(TAG, "No memory for RTSP RX buffer");
+        close(client);
+        vTaskDelete(NULL);
+        return;
+    }
 
     xSemaphoreTake(ap_mutex, portMAX_DELAY);
     rtsp_connections++;
@@ -347,11 +332,12 @@ static void rtsp_client_task(void *arg)
     xSemaphoreGive(ap_mutex);
 
     while (true) {
-        int len = recv(client, rx, sizeof(rx) - 1, 0);
+        int len = recv(client, rx, RTSP_RX_BUFFER_SIZE - 1, 0);
         if (len <= 0) break;
 
         rx[len] = 0;
-        char first_line[160] = {0};
+
+        char first_line[128] = {0};
         const char *eol = strstr(rx, "\r\n");
         size_t first_len = eol ? (size_t)(eol - rx) : (size_t)len;
         if (first_len >= sizeof(first_line)) first_len = sizeof(first_line) - 1;
@@ -361,6 +347,7 @@ static void rtsp_client_task(void *arg)
         handle_rtsp_request(client, rx);
     }
 
+    free(rx);
     shutdown(client, 0);
     close(client);
 
@@ -431,7 +418,7 @@ static void rtsp_listener_task(void *arg)
             continue;
         }
 
-        xTaskCreate(rtsp_client_task, "oaos_rtsp_client", 6144, (void *)(intptr_t)client, 6, NULL);
+        xTaskCreate(rtsp_client_task, "oaos_rtsp_client", 12288, (void *)(intptr_t)client, 6, NULL);
     }
 }
 
@@ -493,8 +480,8 @@ esp_err_t oaos_airplay_init(void)
 
     start_time_us = esp_timer_get_time();
 
-    ESP_LOGI(TAG, "AirPlay/RAOP discovery foundation M0.10 initialized");
-    ESP_LOGW(TAG, "M0.10 improves discovery and RTSP OPTIONS/info only. It is not a playable receiver yet.");
+    ESP_LOGI(TAG, "AirPlay/RAOP discovery foundation M0.11 initialized");
+    ESP_LOGW(TAG, "M0.11 fixes RTSP stack overflow. It is not playable AirPlay audio yet.");
 
     esp_err_t err = start_mdns_airplay();
     if (err != ESP_OK) {
@@ -582,7 +569,7 @@ oaos_airplay_status_t oaos_airplay_get_status(void)
     s.errors = errors;
     s.device_name = device_name;
     s.raop_instance = raop_instance;
-    s.protocol_note = "M0.10: _raop + _airplay mDNS, RTSP OPTIONS/info placeholders; no playable AirPlay audio yet";
+    s.protocol_note = "M0.11: stack-safe RTSP OPTIONS/info placeholders; no playable AirPlay audio yet";
     xSemaphoreGive(ap_mutex);
 
     return s;
