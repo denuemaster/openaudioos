@@ -89,5 +89,6 @@
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_adapter/liboaos_airplay_adapter.a
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/espressif__mdns/libespressif__mdns.a
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay/liboaos_airplay.a
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_backend/liboaos_airplay_backend.a
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_web/liboaos_web.a
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/main/libmain.a

@@ -878,6 +878,13 @@
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay/CMakeFiles/install.dir
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay/CMakeFiles/install/local.dir
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay/CMakeFiles/install/strip.dir
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_backend/CMakeFiles/__idf_oaos_airplay_backend.dir
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_backend/CMakeFiles/edit_cache.dir
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_backend/CMakeFiles/rebuild_cache.dir
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_backend/CMakeFiles/list_install_components.dir
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_backend/CMakeFiles/install.dir
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_backend/CMakeFiles/install/local.dir
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_backend/CMakeFiles/install/strip.dir
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_web/CMakeFiles/__idf_oaos_web.dir
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_web/CMakeFiles/edit_cache.dir
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_web/CMakeFiles/rebuild_cache.dir

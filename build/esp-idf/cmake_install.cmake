@@ -579,6 +579,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay_backend/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_web/cmake_install.cmake")
 endif()
 

@@ -9,7 +9,7 @@ static const char *TAG = "oaos_airplay_adapter";
 
 static SemaphoreHandle_t adapter_mutex;
 static bool initialized = false;
-static oaos_airplay_adapter_stack_t selected_stack = OAOS_AP_ADAPTER_STACK_INTERNAL_PLACEHOLDER;
+static oaos_airplay_adapter_stack_t selected_stack = OAOS_AP_ADAPTER_STACK_RBOUTEILLER_AIRPLAY_ESP32;
 static uint64_t pcm_frames_received = 0;
 static uint64_t pcm_frames_forwarded = 0;
 static uint32_t pcm_push_errors = 0;
@@ -41,7 +41,7 @@ esp_err_t oaos_airplay_adapter_init(void)
 
     ESP_LOGI(TAG, "AirPlay adapter initialized");
     ESP_LOGI(TAG, "Selected stack strategy: %s", oaos_airplay_adapter_stack_name(selected_stack));
-    ESP_LOGW(TAG, "M0.13 is an adapter layer only. No third-party AirPlay stack is compiled in yet.");
+    ESP_LOGW(TAG, "M0.14 selects rbouteiller/airplay-esp32 as first candidate, but does not compile it yet.");
 
     return ESP_OK;
 }
@@ -51,11 +51,8 @@ esp_err_t oaos_airplay_adapter_claim_source(void)
     esp_err_t err = oaos_audio_set_active_source(OAOS_AUDIO_SOURCE_AIRPLAY);
 
     xSemaphoreTake(adapter_mutex, portMAX_DELAY);
-    if (err == ESP_OK) {
-        source_claims++;
-    } else {
-        pcm_push_errors++;
-    }
+    if (err == ESP_OK) source_claims++;
+    else pcm_push_errors++;
     xSemaphoreGive(adapter_mutex);
 
     return err;
@@ -66,11 +63,6 @@ esp_err_t oaos_airplay_adapter_release_source(void)
     xSemaphoreTake(adapter_mutex, portMAX_DELAY);
     source_releases++;
     xSemaphoreGive(adapter_mutex);
-
-    /*
-     * Do not automatically switch back to test tone here.
-     * The source manager should later decide fallback policy.
-     */
     return ESP_OK;
 }
 
@@ -92,11 +84,8 @@ esp_err_t oaos_airplay_adapter_push_pcm_s16_stereo(const int16_t *frames, size_t
     );
 
     xSemaphoreTake(adapter_mutex, portMAX_DELAY);
-    if (err == ESP_OK) {
-        pcm_frames_forwarded += frame_count;
-    } else {
-        pcm_push_errors++;
-    }
+    if (err == ESP_OK) pcm_frames_forwarded += frame_count;
+    else pcm_push_errors++;
     xSemaphoreGive(adapter_mutex);
 
     return err;

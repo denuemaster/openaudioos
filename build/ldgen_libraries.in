@@ -89,5 +89,6 @@ $<TARGET_FILE:__idf_oaos_audio>
 $<TARGET_FILE:__idf_oaos_airplay_adapter>
 $<TARGET_FILE:__idf_espressif__mdns>
 $<TARGET_FILE:__idf_oaos_airplay>
+$<TARGET_FILE:__idf_oaos_airplay_backend>
 $<TARGET_FILE:__idf_oaos_web>
 $<TARGET_FILE:__idf_main>

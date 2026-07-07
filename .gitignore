@@ -9,3 +9,4 @@ sdkconfig.old
 *.elf
 *.bin
 *.map
+third_party/airplay-esp32/

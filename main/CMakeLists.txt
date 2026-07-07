@@ -9,4 +9,5 @@ idf_component_register(
         oaos_audio
         oaos_airplay
         oaos_airplay_adapter
+        oaos_airplay_backend
 )
