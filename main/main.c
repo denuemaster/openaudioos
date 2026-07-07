@@ -6,18 +6,20 @@
 #include "oaos_wifi.h"
 #include "oaos_web.h"
 #include "oaos_audio.h"
+#include "oaos_airplay.h"
 
 static const char *TAG = "OpenAudioOS";
 
 void app_main(void)
 {
-    ESP_LOGI(TAG, "OpenAudioOS M0.4 starting");
+    ESP_LOGI(TAG, "OpenAudioOS M0.8 starting");
 
     ESP_ERROR_CHECK(oaos_system_init());
     ESP_ERROR_CHECK(oaos_storage_init());
     ESP_ERROR_CHECK(oaos_wifi_init());
-    ESP_ERROR_CHECK(oaos_web_init());
     ESP_ERROR_CHECK(oaos_audio_init());
+    ESP_ERROR_CHECK(oaos_airplay_init());
+    ESP_ERROR_CHECK(oaos_web_init());
 
-    ESP_LOGI(TAG, "OpenAudioOS M0.4 ready");
+    ESP_LOGI(TAG, "OpenAudioOS M0.8 ready");
 }

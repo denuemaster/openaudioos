@@ -15,6 +15,7 @@
 #include "oaos_audio.h"
 #include "oaos_storage.h"
 #include "oaos_wifi.h"
+#include "oaos_airplay.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
@@ -23,23 +24,30 @@ static const char *TAG = "oaos_web";
 static const char *web_page =
 "<!doctype html><html><head><meta charset='utf-8'>"
 "<meta name='viewport' content='width=device-width,initial-scale=1'>"
-"<title>OpenAudioOS M0.7</title>"
+"<title>OpenAudioOS M0.8</title>"
 "<style>"
 "body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;background:#111;color:#eee;padding:24px;margin:0}"
-".card{max-width:900px;margin:auto;background:#1d1d1f;border-radius:18px;padding:28px;box-shadow:0 20px 60px #0008}"
+".card{max-width:940px;margin:auto;background:#1d1d1f;border-radius:18px;padding:28px;box-shadow:0 20px 60px #0008}"
 "input,button,select{box-sizing:border-box;padding:12px;margin:6px 0;border-radius:10px;border:0;font-size:16px}"
-"button{background:#0a84ff;color:white;font-weight:700;cursor:pointer}button.secondary{background:#333}"
+"button{background:#0a84ff;color:white;font-weight:700;cursor:pointer}button.secondary{background:#333}button.danger{background:#b00020}"
 ".row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1;min-width:160px}"
 ".ok{color:#5cff9d}.warn{color:#ffd36e}.muted{color:#aaa}pre{background:#101010;padding:16px;border-radius:12px;overflow:auto}a{color:#8ab4ff}"
 "</style></head>"
 "<body><div class='card'>"
-"<h1>OpenAudioOS M0.7</h1>"
-"<p class='ok'>Audio source abstraction ready</p>"
-"<p class='muted'>Use the IP address shown in the serial monitor or your router.</p>"
+"<h1>OpenAudioOS M0.8</h1>"
+"<p class='ok'>AirPlay foundation layer added</p>"
+"<p class='warn'>Real AirPlay/RAOP is not implemented yet. Placeholder stream validates source plumbing.</p>"
 "<div class='row'>"
 "<button onclick='api(\"/api/audio/start\")'>Start tone</button>"
 "<button class='secondary' onclick='api(\"/api/audio/stop\")'>Stop tone</button>"
 "<button class='secondary' onclick='location.href=\"/reset-wifi\"'>Reset WiFi</button>"
+"</div>"
+"<h2>AirPlay Foundation</h2>"
+"<div class='row'>"
+"<button onclick='api(\"/api/airplay/enable\")'>Enable AirPlay</button>"
+"<button class='secondary' onclick='api(\"/api/airplay/disable\")'>Disable AirPlay</button>"
+"<button onclick='api(\"/api/airplay/placeholder/start\")'>Start placeholder stream</button>"
+"<button class='secondary' onclick='api(\"/api/airplay/placeholder/stop\")'>Stop placeholder stream</button>"
 "</div>"
 "<h2>Audio Source</h2>"
 "<div class='row'>"
@@ -54,10 +62,6 @@ static const char *web_page =
 "<input id='freq' type='number' value='440' min='50' max='20000'>"
 "<button onclick='setFreq()'>Set frequency</button>"
 "</div>"
-"<h2>OTA Upload</h2>"
-"<input id='fw' type='file' accept='.bin'>"
-"<button onclick='uploadFw()'>Upload app .bin</button>"
-"<p class='warn'>Use the application binary from <code>build/OpenAudioOS.bin</code>, not a merged flash image.</p>"
 "<h2>Status</h2><pre id='status'>Loading...</pre>"
 "</div>"
 "<script>"
@@ -66,7 +70,6 @@ static const char *web_page =
 "async function setVolume(v){document.getElementById('volLabel').textContent=v+'%';await fetch('/api/audio/volume?value='+v);}"
 "async function setFreq(){let v=document.getElementById('freq').value;await fetch('/api/audio/frequency?value='+v);refresh();}"
 "async function setSource(){let v=document.getElementById('source').value;await fetch('/api/audio/source?value='+v);refresh();}"
-"async function uploadFw(){let f=document.getElementById('fw').files[0];if(!f){alert('Choose firmware .bin first');return;}let r=await fetch('/ota',{method:'POST',body:f});alert(await r.text());}"
 "setInterval(refresh,15000);refresh();"
 "</script></body></html>";
 
@@ -86,131 +89,54 @@ static const char *setup_page =
 "<button type='submit'>Save WiFi</button>"
 "</form></div></body></html>";
 
-static void url_decode(char *dst, const char *src, size_t dst_len)
-{
-    size_t di = 0;
-    for (size_t si = 0; src[si] && di + 1 < dst_len; si++) {
-        if (src[si] == '%' && src[si+1] && src[si+2]) {
-            char hex[3] = { src[si+1], src[si+2], 0 };
-            dst[di++] = (char)strtol(hex, NULL, 16);
-            si += 2;
-        } else if (src[si] == '+') dst[di++] = ' ';
-        else dst[di++] = src[si];
-    }
-    dst[di] = 0;
-}
+static void url_decode(char *dst, const char *src, size_t dst_len){size_t di=0;for(size_t si=0;src[si]&&di+1<dst_len;si++){if(src[si]=='%'&&src[si+1]&&src[si+2]){char hex[3]={src[si+1],src[si+2],0};dst[di++]=(char)strtol(hex,NULL,16);si+=2;}else if(src[si]=='+')dst[di++]=' ';else dst[di++]=src[si];}dst[di]=0;}
+static void form_get_value(const char *body,const char *key,char *out,size_t out_len){out[0]=0;char pattern[32];snprintf(pattern,sizeof(pattern),"%s=",key);const char*start=strstr(body,pattern);if(!start)return;start+=strlen(pattern);const char*end=strchr(start,'&');size_t len=end?(size_t)(end-start):strlen(start);char tmp[128]={0};if(len>=sizeof(tmp))len=sizeof(tmp)-1;memcpy(tmp,start,len);url_decode(out,tmp,out_len);}
+static bool query_int(httpd_req_t *req,const char *key,int *out){char query[128]={0};if(httpd_req_get_url_query_str(req,query,sizeof(query))!=ESP_OK)return false;char value[32]={0};if(httpd_query_key_value(query,key,value,sizeof(value))!=ESP_OK)return false;*out=atoi(value);return true;}
 
-static void form_get_value(const char *body, const char *key, char *out, size_t out_len)
-{
-    out[0] = 0;
-    char pattern[32];
-    snprintf(pattern, sizeof(pattern), "%s=", key);
-    const char *start = strstr(body, pattern);
-    if (!start) return;
-    start += strlen(pattern);
-    const char *end = strchr(start, '&');
-    size_t len = end ? (size_t)(end - start) : strlen(start);
-    char tmp[128] = {0};
-    if (len >= sizeof(tmp)) len = sizeof(tmp) - 1;
-    memcpy(tmp, start, len);
-    url_decode(out, tmp, out_len);
-}
-
-static bool query_int(httpd_req_t *req, const char *key, int *out)
-{
-    char query[128] = {0};
-    if (httpd_req_get_url_query_str(req, query, sizeof(query)) != ESP_OK) return false;
-    char value[32] = {0};
-    if (httpd_query_key_value(query, key, value, sizeof(value)) != ESP_OK) return false;
-    *out = atoi(value);
-    return true;
-}
-
-static esp_err_t root_handler(httpd_req_t *req)
-{
-    httpd_resp_set_type(req, "text/html; charset=utf-8");
-    if (oaos_wifi_is_configured()) return httpd_resp_send(req, web_page, HTTPD_RESP_USE_STRLEN);
-    return httpd_resp_send(req, setup_page, HTTPD_RESP_USE_STRLEN);
-}
-
-static esp_err_t save_handler(httpd_req_t *req)
-{
-    char body[256] = {0};
-    int received = httpd_req_recv(req, body, sizeof(body) - 1);
-    if (received <= 0) {
-        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "No body");
-        return ESP_FAIL;
-    }
-
-    char ssid[33] = {0};
-    char password[65] = {0};
-    form_get_value(body, "ssid", ssid, sizeof(ssid));
-    form_get_value(body, "password", password, sizeof(password));
-
-    if (strlen(ssid) == 0) {
-        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "SSID required");
-        return ESP_FAIL;
-    }
-
-    ESP_ERROR_CHECK(oaos_storage_save_wifi(ssid, password));
-    httpd_resp_sendstr(req, "<html><body><h1>Saved</h1><p>Device will reboot now.</p></body></html>");
-    vTaskDelay(pdMS_TO_TICKS(700));
-    esp_restart();
-    return ESP_OK;
-}
-
-static esp_err_t reset_wifi_handler(httpd_req_t *req)
-{
-    oaos_storage_clear_wifi();
-    httpd_resp_sendstr(req, "WiFi reset. Rebooting.");
-    vTaskDelay(pdMS_TO_TICKS(700));
-    esp_restart();
-    return ESP_OK;
-}
+static esp_err_t root_handler(httpd_req_t *req){httpd_resp_set_type(req,"text/html; charset=utf-8");if(oaos_wifi_is_configured())return httpd_resp_send(req,web_page,HTTPD_RESP_USE_STRLEN);return httpd_resp_send(req,setup_page,HTTPD_RESP_USE_STRLEN);}
+static esp_err_t save_handler(httpd_req_t *req){char body[256]={0};int received=httpd_req_recv(req,body,sizeof(body)-1);if(received<=0){httpd_resp_send_err(req,HTTPD_400_BAD_REQUEST,"No body");return ESP_FAIL;}char ssid[33]={0};char password[65]={0};form_get_value(body,"ssid",ssid,sizeof(ssid));form_get_value(body,"password",password,sizeof(password));if(strlen(ssid)==0){httpd_resp_send_err(req,HTTPD_400_BAD_REQUEST,"SSID required");return ESP_FAIL;}ESP_ERROR_CHECK(oaos_storage_save_wifi(ssid,password));httpd_resp_sendstr(req,"<html><body><h1>Saved</h1><p>Device will reboot now.</p></body></html>");vTaskDelay(pdMS_TO_TICKS(700));esp_restart();return ESP_OK;}
+static esp_err_t reset_wifi_handler(httpd_req_t *req){oaos_storage_clear_wifi();httpd_resp_sendstr(req,"WiFi reset. Rebooting.");vTaskDelay(pdMS_TO_TICKS(700));esp_restart();return ESP_OK;}
 
 static esp_err_t audio_start_handler(httpd_req_t *req){ oaos_audio_start(); httpd_resp_sendstr(req, "OK"); return ESP_OK; }
 static esp_err_t audio_stop_handler(httpd_req_t *req){ oaos_audio_stop(); httpd_resp_sendstr(req, "OK"); return ESP_OK; }
+static esp_err_t audio_source_handler(httpd_req_t *req){int value=0;if(!query_int(req,"value",&value)){httpd_resp_send_err(req,HTTPD_400_BAD_REQUEST,"missing value");return ESP_FAIL;}esp_err_t err=oaos_audio_set_active_source((oaos_audio_source_type_t)value);if(err!=ESP_OK){httpd_resp_send_err(req,HTTPD_400_BAD_REQUEST,"invalid source");return ESP_FAIL;}httpd_resp_sendstr(req,"OK");return ESP_OK;}
+static esp_err_t audio_volume_handler(httpd_req_t *req){int value=0;if(!query_int(req,"value",&value)){httpd_resp_send_err(req,HTTPD_400_BAD_REQUEST,"missing value");return ESP_FAIL;}oaos_audio_set_volume(value);httpd_resp_sendstr(req,"OK");return ESP_OK;}
+static esp_err_t audio_frequency_handler(httpd_req_t *req){int value=0;if(!query_int(req,"value",&value)){httpd_resp_send_err(req,HTTPD_400_BAD_REQUEST,"missing value");return ESP_FAIL;}oaos_audio_set_frequency(value);httpd_resp_sendstr(req,"OK");return ESP_OK;}
 
-static esp_err_t audio_source_handler(httpd_req_t *req)
+static esp_err_t airplay_status_handler(httpd_req_t *req);
+static esp_err_t airplay_enable_handler(httpd_req_t *req){oaos_airplay_enable();httpd_resp_sendstr(req,"OK");return ESP_OK;}
+static esp_err_t airplay_disable_handler(httpd_req_t *req){oaos_airplay_disable();httpd_resp_sendstr(req,"OK");return ESP_OK;}
+static esp_err_t airplay_ph_start_handler(httpd_req_t *req){oaos_airplay_start_placeholder_stream();httpd_resp_sendstr(req,"OK");return ESP_OK;}
+static esp_err_t airplay_ph_stop_handler(httpd_req_t *req){oaos_airplay_stop_placeholder_stream();httpd_resp_sendstr(req,"OK");return ESP_OK;}
+
+static void append_airplay_json(char *dst, size_t dst_len)
 {
-    int value = 0;
-    if (!query_int(req, "value", &value)) {
-        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "missing value");
-        return ESP_FAIL;
-    }
-
-    esp_err_t err = oaos_audio_set_active_source((oaos_audio_source_type_t)value);
-    if (err != ESP_OK) {
-        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "invalid source");
-        return ESP_FAIL;
-    }
-
-    httpd_resp_sendstr(req, "OK");
-    return ESP_OK;
-}
-
-static esp_err_t audio_volume_handler(httpd_req_t *req)
-{
-    int value = 0;
-    if (!query_int(req, "value", &value)) {
-        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "missing value");
-        return ESP_FAIL;
-    }
-    oaos_audio_set_volume(value);
-    httpd_resp_sendstr(req, "OK");
-    return ESP_OK;
-}
-
-static esp_err_t audio_frequency_handler(httpd_req_t *req)
-{
-    int value = 0;
-    if (!query_int(req, "value", &value)) {
-        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "missing value");
-        return ESP_FAIL;
-    }
-    oaos_audio_set_frequency(value);
-    httpd_resp_sendstr(req, "OK");
-    return ESP_OK;
+    oaos_airplay_status_t ap = oaos_airplay_get_status();
+    char tmp[384];
+    snprintf(tmp, sizeof(tmp),
+             "\"airplay\":{"
+             "\"enabled\":%s,"
+             "\"state_id\":%d,"
+             "\"state\":\"%s\","
+             "\"uptime_ms\":%llu,"
+             "\"sessions_started\":%lu,"
+             "\"packets_received\":%lu,"
+             "\"frames_pushed\":%lu,"
+             "\"errors\":%lu,"
+             "\"device_name\":\"%s\","
+             "\"note\":\"%s\""
+             "}",
+             ap.enabled ? "true" : "false",
+             (int)ap.state,
+             ap.state_name,
+             (unsigned long long)ap.uptime_ms,
+             (unsigned long)ap.sessions_started,
+             (unsigned long)ap.packets_received,
+             (unsigned long)ap.frames_pushed,
+             (unsigned long)ap.errors,
+             ap.device_name,
+             ap.protocol_note);
+    strlcat(dst, tmp, dst_len);
 }
 
 static esp_err_t api_status_handler(httpd_req_t *req)
@@ -221,10 +147,10 @@ static esp_err_t api_status_handler(httpd_req_t *req)
     const esp_partition_t *running = esp_ota_get_running_partition();
     const esp_partition_t *next = esp_ota_get_next_update_partition(NULL);
 
-    char json[1280];
+    char json[1800];
     snprintf(json, sizeof(json),
              "{"
-             "\"name\":\"OpenAudioOS M0.7\","
+             "\"name\":\"OpenAudioOS M0.8\","
              "\"version\":\"%s\","
              "\"configured\":%s,"
              "\"has_saved_wifi\":%s,"
@@ -234,11 +160,7 @@ static esp_err_t api_status_handler(httpd_req_t *req)
              "\"uptime_ms\":%lld,"
              "\"free_heap\":%lu,"
              "\"free_psram\":%lu,"
-             "\"ota\":{"
-                "\"running_partition\":\"%s\","
-                "\"next_partition\":\"%s\","
-                "\"ota_available\":%s"
-             "},"
+             "\"ota\":{\"running_partition\":\"%s\",\"next_partition\":\"%s\",\"ota_available\":%s},"
              "\"audio\":{"
                 "\"active_source_id\":%d,"
                 "\"active_source\":\"%s\","
@@ -258,8 +180,7 @@ static esp_err_t api_status_handler(httpd_req_t *req)
                 "\"i2s_bclk\":%d,"
                 "\"i2s_dout\":%d,"
                 "\"i2s_lrck\":%d"
-             "}"
-             "}",
+             "},",
              app ? app->version : "unknown",
              oaos_wifi_is_configured() ? "true" : "false",
              oaos_wifi_has_saved_config() ? "true" : "false",
@@ -291,6 +212,18 @@ static esp_err_t api_status_handler(httpd_req_t *req)
              OAOS_I2S_DOUT_GPIO,
              OAOS_I2S_LRCK_GPIO);
 
+    append_airplay_json(json, sizeof(json));
+    strlcat(json, "}", sizeof(json));
+
+    httpd_resp_set_type(req, "application/json");
+    return httpd_resp_send(req, json, HTTPD_RESP_USE_STRLEN);
+}
+
+static esp_err_t airplay_status_handler(httpd_req_t *req)
+{
+    char json[512] = "{";
+    append_airplay_json(json, sizeof(json));
+    strlcat(json, "}", sizeof(json));
     httpd_resp_set_type(req, "application/json");
     return httpd_resp_send(req, json, HTTPD_RESP_USE_STRLEN);
 }
@@ -298,52 +231,23 @@ static esp_err_t api_status_handler(httpd_req_t *req)
 static esp_err_t ota_handler(httpd_req_t *req)
 {
     const esp_partition_t *update_partition = esp_ota_get_next_update_partition(NULL);
-    if (!update_partition) {
-        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "No OTA partition found");
-        return ESP_FAIL;
-    }
-
-    ESP_LOGI(TAG, "OTA update to partition: %s, size=%d bytes", update_partition->label, req->content_len);
-
+    if (!update_partition) { httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "No OTA partition found"); return ESP_FAIL; }
     esp_ota_handle_t ota_handle;
     esp_err_t err = esp_ota_begin(update_partition, OTA_WITH_SEQUENTIAL_WRITES, &ota_handle);
-    if (err != ESP_OK) {
-        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA begin failed");
-        return ESP_FAIL;
-    }
-
-    char buf[2048];
-    int remaining = req->content_len;
+    if (err != ESP_OK) { httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA begin failed"); return ESP_FAIL; }
+    char buf[2048]; int remaining = req->content_len;
     while (remaining > 0) {
         int to_read = remaining > (int)sizeof(buf) ? (int)sizeof(buf) : remaining;
         int received = httpd_req_recv(req, buf, to_read);
-        if (received <= 0) {
-            esp_ota_abort(ota_handle);
-            httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Receive failed");
-            return ESP_FAIL;
-        }
-
+        if (received <= 0) { esp_ota_abort(ota_handle); httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Receive failed"); return ESP_FAIL; }
         err = esp_ota_write(ota_handle, buf, received);
-        if (err != ESP_OK) {
-            esp_ota_abort(ota_handle);
-            httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA write failed");
-            return ESP_FAIL;
-        }
+        if (err != ESP_OK) { esp_ota_abort(ota_handle); httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA write failed"); return ESP_FAIL; }
         remaining -= received;
     }
-
     err = esp_ota_end(ota_handle);
-    if (err != ESP_OK) {
-        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA end failed");
-        return ESP_FAIL;
-    }
-
+    if (err != ESP_OK) { httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA end failed"); return ESP_FAIL; }
     err = esp_ota_set_boot_partition(update_partition);
-    if (err != ESP_OK) {
-        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA set boot failed");
-        return ESP_FAIL;
-    }
-
+    if (err != ESP_OK) { httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA set boot failed"); return ESP_FAIL; }
     httpd_resp_sendstr(req, "OTA successful. Rebooting.");
     vTaskDelay(pdMS_TO_TICKS(1000));
     esp_restart();
@@ -355,7 +259,7 @@ esp_err_t oaos_web_init(void)
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
     config.server_port = 80;
     config.stack_size = 8192;
-    config.max_uri_handlers = 13;
+    config.max_uri_handlers = 16;
 
     httpd_handle_t server = NULL;
     ESP_RETURN_ON_ERROR(httpd_start(&server, &config), TAG, "httpd_start failed");
@@ -370,6 +274,11 @@ esp_err_t oaos_web_init(void)
         {.uri="/api/audio/source", .method=HTTP_GET, .handler=audio_source_handler},
         {.uri="/api/audio/volume", .method=HTTP_GET, .handler=audio_volume_handler},
         {.uri="/api/audio/frequency", .method=HTTP_GET, .handler=audio_frequency_handler},
+        {.uri="/api/airplay/status", .method=HTTP_GET, .handler=airplay_status_handler},
+        {.uri="/api/airplay/enable", .method=HTTP_GET, .handler=airplay_enable_handler},
+        {.uri="/api/airplay/disable", .method=HTTP_GET, .handler=airplay_disable_handler},
+        {.uri="/api/airplay/placeholder/start", .method=HTTP_GET, .handler=airplay_ph_start_handler},
+        {.uri="/api/airplay/placeholder/stop", .method=HTTP_GET, .handler=airplay_ph_stop_handler},
         {.uri="/ota", .method=HTTP_POST, .handler=ota_handler},
     };
 

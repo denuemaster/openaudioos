@@ -7,4 +7,5 @@ idf_component_register(
         oaos_wifi
         oaos_web
         oaos_audio
+        oaos_airplay
 )

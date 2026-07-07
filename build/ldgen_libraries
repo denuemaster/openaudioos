@@ -86,5 +86,6 @@
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_storage/liboaos_storage.a
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_wifi/liboaos_wifi.a
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_audio/liboaos_audio.a
+/Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_airplay/liboaos_airplay.a
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/oaos_web/liboaos_web.a
 /Users/denizuzun/Developer/openaudioos/build/esp-idf/main/libmain.a
