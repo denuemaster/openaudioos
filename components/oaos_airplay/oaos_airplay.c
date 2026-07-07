@@ -4,6 +4,7 @@
 #include <math.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <strings.h>
 
 #include "esp_log.h"
@@ -25,6 +26,14 @@ static const char *TAG = "oaos_airplay";
 #define RTSP_RX_BUFFER_SIZE 8192
 #define RTSP_RESPONSE_BUFFER_SIZE 4096
 
+typedef struct {
+    int socket;
+    uint32_t session_id;
+    uint32_t last_cseq;
+    bool fp_setup_seen;
+    uint32_t requests_seen;
+} rtsp_session_t;
+
 static SemaphoreHandle_t ap_mutex;
 static bool enabled = true;
 static bool placeholder_streaming = false;
@@ -35,6 +44,9 @@ static bool rtsp_listener_started = false;
 static oaos_airplay_state_t state = OAOS_AIRPLAY_STATE_IDLE;
 static uint64_t start_time_us = 0;
 
+static uint32_t next_session_id = 1;
+static uint32_t last_session_id = 0;
+static uint32_t last_cseq = 0;
 static uint32_t sessions_started = 0;
 static uint32_t rtsp_connections = 0;
 static uint32_t rtsp_requests = 0;
@@ -50,7 +62,10 @@ static uint32_t rtsp_teardown = 0;
 static uint32_t packets_received = 0;
 static uint32_t frames_pushed = 0;
 static uint32_t errors = 0;
+static uint32_t partial_body_reads = 0;
 static uint32_t last_content_length = 0;
+static uint32_t last_advertised_content_length = 0;
+static oaos_fp_request_type_t last_fp_request_type = OAOS_FP_REQUEST_UNKNOWN;
 static uint8_t last_fp_header[16] = {0};
 
 static char raop_instance[64] = "OpenAudioOS";
@@ -66,8 +81,20 @@ const char *oaos_airplay_state_name(oaos_airplay_state_t s)
         case OAOS_AIRPLAY_STATE_ADVERTISING: return "advertising";
         case OAOS_AIRPLAY_STATE_CONNECTED: return "connected";
         case OAOS_AIRPLAY_STATE_FP_SETUP: return "fp_setup";
+        case OAOS_AIRPLAY_STATE_AUTH_REQUIRED: return "auth_required";
         case OAOS_AIRPLAY_STATE_STREAMING: return "streaming";
         case OAOS_AIRPLAY_STATE_ERROR: return "error";
+        default: return "unknown";
+    }
+}
+
+const char *oaos_fp_request_name(oaos_fp_request_type_t type)
+{
+    switch (type) {
+        case OAOS_FP_REQUEST_UNKNOWN: return "unknown";
+        case OAOS_FP_REQUEST_FPLY_3_1_1: return "fply_3_1_1";
+        case OAOS_FP_REQUEST_FPLY_3_1_2: return "fply_3_1_2";
+        case OAOS_FP_REQUEST_FPLY_OTHER: return "fply_other";
         default: return "unknown";
     }
 }
@@ -165,7 +192,7 @@ static esp_err_t start_mdns_airplay(void)
 
     ESP_LOGI(TAG, "RAOP mDNS advertised as '%s' on port %d", raop_instance, AIRPLAY_RTSP_PORT);
     ESP_LOGI(TAG, "AirPlay mDNS advertised as '%s' deviceid=%s on port %d", device_name, device_id, AIRPLAY_RTSP_PORT);
-    ESP_LOGW(TAG, "M0.15 internal simple AirPlay: discovery + RTSP + fp-setup diagnostics only; no real FairPlay keys yet.");
+    ESP_LOGW(TAG, "M0.16: session-state and fp-setup classification only; no FairPlay keys.");
     return ESP_OK;
 }
 
@@ -209,17 +236,24 @@ static const uint8_t *get_body_ptr(const char *request, int total_len, int *body
     return (const uint8_t *)p;
 }
 
-static void get_cseq(const char *request, char *out, size_t out_len)
+static void get_header_token(const char *request, const char *name, char *out, size_t out_len, const char *fallback)
 {
-    const char *p = find_header_case(request, "CSeq:");
+    const char *p = find_header_case(request, name);
     if (!p) {
-        strlcpy(out, "1", out_len);
+        strlcpy(out, fallback ? fallback : "", out_len);
         return;
     }
     while (*p == ' ' || *p == '\t') p++;
     size_t i = 0;
     while (*p && *p != '\r' && *p != '\n' && i + 1 < out_len) out[i++] = *p++;
     out[i] = 0;
+}
+
+static uint32_t get_cseq_u32(const char *request)
+{
+    char cseq[32] = {0};
+    get_header_token(request, "CSeq:", cseq, sizeof(cseq), "0");
+    return (uint32_t)strtoul(cseq, NULL, 10);
 }
 
 static void get_method(const char *request, char *out, size_t out_len)
@@ -261,7 +295,7 @@ static void send_rtsp_response(int client, const char *cseq, const char *code, c
     int len = snprintf(response, RTSP_RESPONSE_BUFFER_SIZE,
              "RTSP/1.0 %s\r\n"
              "CSeq: %s\r\n"
-             "Server: OpenAudioOS-M0.15\r\n"
+             "Server: OpenAudioOS-M0.16\r\n"
              "%s"
              "Content-Length: %u\r\n"
              "\r\n",
@@ -272,9 +306,7 @@ static void send_rtsp_response(int client, const char *cseq, const char *code, c
 
     if (len > 0) {
         send(client, response, strlen(response), 0);
-        if (body && body_len > 0) {
-            send(client, body, body_len, 0);
-        }
+        if (body && body_len > 0) send(client, body, body_len, 0);
     }
     free(response);
 }
@@ -296,51 +328,82 @@ static void log_first_bytes(const char *label, const uint8_t *body, int body_len
     ESP_LOGI(TAG, "%s: content_length=%d first_bytes=%s", label, body_len, hex);
 }
 
-static void handle_fp_setup(int client, const char *cseq, const uint8_t *body, int body_len)
+static oaos_fp_request_type_t classify_fp_request(const uint8_t *body, int body_len)
 {
+    if (!body || body_len < 8) return OAOS_FP_REQUEST_UNKNOWN;
+    if (body[0] != 'F' || body[1] != 'P' || body[2] != 'L' || body[3] != 'Y') {
+        return OAOS_FP_REQUEST_UNKNOWN;
+    }
+    if (body[4] == 0x03 && body[5] == 0x01 && body[6] == 0x01) return OAOS_FP_REQUEST_FPLY_3_1_1;
+    if (body[4] == 0x03 && body[5] == 0x01 && body[6] == 0x02) return OAOS_FP_REQUEST_FPLY_3_1_2;
+    return OAOS_FP_REQUEST_FPLY_OTHER;
+}
+
+static void handle_fp_setup(rtsp_session_t *session, int client, const char *cseq, const uint8_t *body, int body_len, int advertised_len)
+{
+    oaos_fp_request_type_t fp_type = classify_fp_request(body, body_len);
+
     xSemaphoreTake(ap_mutex, portMAX_DELAY);
     rtsp_fp_setup++;
+    last_session_id = session ? session->session_id : 0;
     last_content_length = body_len;
+    last_advertised_content_length = advertised_len;
+    last_fp_request_type = fp_type;
     memset(last_fp_header, 0, sizeof(last_fp_header));
-    if (body && body_len > 0) {
-        memcpy(last_fp_header, body, body_len < 16 ? body_len : 16);
-    }
+    if (body && body_len > 0) memcpy(last_fp_header, body, body_len < 16 ? body_len : 16);
     set_state_locked(OAOS_AIRPLAY_STATE_FP_SETUP);
     xSemaphoreGive(ap_mutex);
 
+    if (session) session->fp_setup_seen = true;
+
     log_first_bytes("FP-SETUP summary", body, body_len);
+    ESP_LOGI(TAG, "FP-SETUP classified as %s", oaos_fp_request_name(fp_type));
 
     /*
-     * Important:
-     * This is deliberately NOT a fake FairPlay response.
-     * A real response requires the correct FairPlay key exchange.
-     * We return a clean RTSP error so the ESP stays stable and diagnostics continue.
+     * We intentionally do not fake FairPlay. This milestone only stores the
+     * session and classifies the client request safely.
      */
+    xSemaphoreTake(ap_mutex, portMAX_DELAY);
+    set_state_locked(OAOS_AIRPLAY_STATE_AUTH_REQUIRED);
+    xSemaphoreGive(ap_mutex);
+
     send_rtsp_text(client, cseq, "501 Not Implemented",
-                   "OpenAudioOS internal AirPlay reached /fp-setup. Real FairPlay response is not implemented yet.\n");
+                   "OpenAudioOS M0.16 reached FairPlay fp-setup and classified the request, but real FairPlay is not implemented yet.\n");
 }
 
-static void handle_rtsp_request(int client, const char *rx, int rx_len)
+static void handle_rtsp_request(rtsp_session_t *session, int client, const char *rx, int rx_len)
 {
     char method[32] = {0};
     char path[96] = {0};
     char cseq[32] = {0};
     get_method(rx, method, sizeof(method));
     get_path(rx, path, sizeof(path));
-    get_cseq(rx, cseq, sizeof(cseq));
+    get_header_token(rx, "CSeq:", cseq, sizeof(cseq), "1");
+    uint32_t cseq_u32 = get_cseq_u32(rx);
 
     int body_len = 0;
     const uint8_t *body = get_body_ptr(rx, rx_len, &body_len);
     int advertised_len = get_content_length(rx);
     if (advertised_len > body_len) {
         ESP_LOGW(TAG, "RTSP body incomplete in single recv: advertised=%d got=%d", advertised_len, body_len);
+        xSemaphoreTake(ap_mutex, portMAX_DELAY);
+        partial_body_reads++;
+        xSemaphoreGive(ap_mutex);
+    }
+
+    if (session) {
+        session->last_cseq = cseq_u32;
+        session->requests_seen++;
     }
 
     xSemaphoreTake(ap_mutex, portMAX_DELAY);
     rtsp_requests++;
+    last_session_id = session ? session->session_id : 0;
+    last_cseq = cseq_u32;
     xSemaphoreGive(ap_mutex);
 
-    ESP_LOGI(TAG, "RTSP method=%s path=%s cseq=%s body=%d advertised=%d", method, path, cseq, body_len, advertised_len);
+    ESP_LOGI(TAG, "RTSP session=%lu method=%s path=%s cseq=%s body=%d advertised=%d",
+             (unsigned long)(session ? session->session_id : 0), method, path, cseq, body_len, advertised_len);
 
     if (strcasecmp(method, "OPTIONS") == 0) {
         xSemaphoreTake(ap_mutex, portMAX_DELAY);
@@ -354,7 +417,7 @@ static void handle_rtsp_request(int client, const char *rx, int rx_len)
     }
 
     if (strcasecmp(method, "POST") == 0 && strcmp(path, "/fp-setup") == 0) {
-        handle_fp_setup(client, cseq, body, body_len);
+        handle_fp_setup(session, client, cseq, body, body_len, advertised_len);
         return;
     }
 
@@ -392,7 +455,7 @@ static void handle_rtsp_request(int client, const char *rx, int rx_len)
                  "\"srcvers\":\"220.68\","
                  "\"statusFlags\":\"0x4\","
                  "\"vv\":2,"
-                 "\"internal\":\"simple-airplay-m0.15\""
+                 "\"internal\":\"simple-airplay-m0.16\""
                  "}\n",
                  device_name,
                  device_id);
@@ -448,10 +511,18 @@ static void rtsp_client_task(void *arg)
         return;
     }
 
+    rtsp_session_t session = {0};
+    session.socket = client;
+
     xSemaphoreTake(ap_mutex, portMAX_DELAY);
+    session.session_id = next_session_id++;
+    last_session_id = session.session_id;
+    sessions_started++;
     rtsp_connections++;
     set_state_locked(OAOS_AIRPLAY_STATE_CONNECTED);
     xSemaphoreGive(ap_mutex);
+
+    ESP_LOGI(TAG, "RTSP session %lu started", (unsigned long)session.session_id);
 
     while (true) {
         int len = recv(client, rx, RTSP_RX_BUFFER_SIZE - 1, 0);
@@ -466,8 +537,11 @@ static void rtsp_client_task(void *arg)
         memcpy(first_line, rx, first_len);
 
         ESP_LOGI(TAG, "RTSP request: %s", first_line);
-        handle_rtsp_request(client, rx, len);
+        handle_rtsp_request(&session, client, rx, len);
     }
+
+    ESP_LOGI(TAG, "RTSP session %lu closed after %lu requests",
+             (unsigned long)session.session_id, (unsigned long)session.requests_seen);
 
     free(rx);
     shutdown(client, 0);
@@ -557,9 +631,11 @@ static void airplay_placeholder_task(void *arg)
         xSemaphoreTake(ap_mutex, portMAX_DELAY);
         run = enabled && placeholder_streaming;
         if (run) set_state_locked(OAOS_AIRPLAY_STATE_STREAMING);
-        else if (enabled && mdns_started && state != OAOS_AIRPLAY_STATE_FP_SETUP) set_state_locked(OAOS_AIRPLAY_STATE_ADVERTISING);
-        else if (enabled && state != OAOS_AIRPLAY_STATE_FP_SETUP) set_state_locked(OAOS_AIRPLAY_STATE_IDLE);
         else if (!enabled) set_state_locked(OAOS_AIRPLAY_STATE_DISABLED);
+        else if (state != OAOS_AIRPLAY_STATE_FP_SETUP && state != OAOS_AIRPLAY_STATE_AUTH_REQUIRED) {
+            if (mdns_started) set_state_locked(OAOS_AIRPLAY_STATE_ADVERTISING);
+            else set_state_locked(OAOS_AIRPLAY_STATE_IDLE);
+        }
         xSemaphoreGive(ap_mutex);
 
         if (!run) {
@@ -578,11 +654,7 @@ static void airplay_placeholder_task(void *arg)
             buffer[i * 2 + 1] = sample;
         }
 
-        esp_err_t err = oaos_airplay_adapter_push_pcm_s16_stereo(
-            buffer,
-            AIRPLAY_PLACEHOLDER_CHUNK_FRAMES,
-            20
-        );
+        esp_err_t err = oaos_airplay_adapter_push_pcm_s16_stereo(buffer, AIRPLAY_PLACEHOLDER_CHUNK_FRAMES, 20);
 
         xSemaphoreTake(ap_mutex, portMAX_DELAY);
         packets_received++;
@@ -601,8 +673,8 @@ esp_err_t oaos_airplay_init(void)
 
     start_time_us = esp_timer_get_time();
 
-    ESP_LOGI(TAG, "OpenAudioOS internal simple AirPlay M0.15 initialized");
-    ESP_LOGW(TAG, "M0.15 is our own implementation path. It reaches /fp-setup but does not implement FairPlay keys yet.");
+    ESP_LOGI(TAG, "OpenAudioOS internal simple AirPlay M0.16 initialized");
+    ESP_LOGW(TAG, "M0.16 adds session-state and fp-setup classification. No FairPlay key exchange yet.");
 
     esp_err_t err = start_mdns_airplay();
     if (err != ESP_OK) {
@@ -693,11 +765,17 @@ oaos_airplay_status_t oaos_airplay_get_status(void)
     s.packets_received = packets_received;
     s.frames_pushed = frames_pushed;
     s.errors = errors;
+    s.last_session_id = last_session_id;
+    s.last_cseq = last_cseq;
     s.last_content_length = last_content_length;
+    s.last_advertised_content_length = last_advertised_content_length;
+    s.partial_body_reads = partial_body_reads;
+    s.last_fp_request_type = last_fp_request_type;
+    s.last_fp_request_name = oaos_fp_request_name(last_fp_request_type);
     memcpy(s.last_fp_header, last_fp_header, sizeof(s.last_fp_header));
     s.device_name = device_name;
     s.raop_instance = raop_instance;
-    s.protocol_note = "M0.15: internal simple AirPlay path; discovery + RTSP + fp-setup diagnostics; no FairPlay keys yet";
+    s.protocol_note = "M0.16: internal simple AirPlay; session-state + fp-setup classification; no FairPlay keys yet";
     xSemaphoreGive(ap_mutex);
 
     return s;

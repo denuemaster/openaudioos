@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "OpenAudioOS",
-    "project_version":    "v0.11-3-g6e3dab7-dirty",
+    "project_version":    "v0.11-4-g4da6855-dirty",
     "project_path":       "/Users/denizuzun/Developer/openaudioos",
     "idf_path":           "/Users/denizuzun/esp/esp-idf",
     "build_dir":          "/Users/denizuzun/Developer/openaudioos/build",
