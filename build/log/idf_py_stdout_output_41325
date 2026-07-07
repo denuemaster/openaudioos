@@ -1,0 +1,153 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4037b03a
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x19fc
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xe8c
+load:0x403cb700,len:0x3164
+entry 0x403c8940
+[0;32mI (26) boot: ESP-IDF v5.3.2 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Jul  7 2026 09:57:56[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (33) boot: efuse block revision: v1.4[0m
+[0;32mI (38) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (43) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (48) boot.esp32s3: SPI Mode       : QIO[0m
+[0;32mI (53) boot.esp32s3: SPI Flash Size : 16MB[0m
+[0;32mI (58) boot: Enabling RNG early entropy source...[0m
+[0;32mI (63) boot: Partition Table:[0m
+[0;32mI (67) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (74) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (81) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (89) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (96) boot: End of partition table[0m
+[0;32mI (101) esp_image: segment 0: paddr=00010020 vaddr=3c090020 size=1e3f0h (123888) map[0m
+[0;32mI (127) esp_image: segment 1: paddr=0002e418 vaddr=3fc9b900 size=01c00h (  7168) load[0m
+[0;32mI (129) esp_image: segment 2: paddr=00030020 vaddr=42000020 size=8ff74h (589684) map[0m
+[0;32mI (221) esp_image: segment 3: paddr=000bff9c vaddr=3fc9d500 size=034fch ( 13564) load[0m
+[0;32mI (224) esp_image: segment 4: paddr=000c34a0 vaddr=40374000 size=17800h ( 96256) load[0m
+[0;32mI (254) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (255) boot: Disabling RNG early entropy source...[0m
+[0;32mI (266) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (267) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (267) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (272) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (277) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (282) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (287) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (293) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (299) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (304) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (310) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (316) MSPI Timing: PSRAM timing tuning index: 5[0m
+[0;32mI (321) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (326) esp_psram: Speed: 80MHz[0m
+[0;32mI (330) cpu_start: Multicore app[0m
+[0;32mI (786) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (794) cpu_start: Pro cpu start user code[0m
+[0;32mI (794) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (795) app_init: Application information:[0m
+[0;32mI (797) app_init: Project name:     OpenAudioOS[0m
+[0;32mI (802) app_init: App version:      1[0m
+[0;32mI (807) app_init: Compile time:     Jul  7 2026 09:57:50[0m
+[0;32mI (813) app_init: ELF file SHA256:  85da6f6d2...[0m
+[0;32mI (818) app_init: ESP-IDF:          v5.3.2[0m
+[0;32mI (823) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (828) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (833) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (837) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (845) heap_init: At 3FCA46B0 len 00045060 (276 KiB): RAM[0m
+[0;32mI (851) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (857) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (863) heap_init: At 600FE100 len 00001EE8 (7 KiB): RTCRAM[0m
+[0;32mI (869) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator[0m
+[0;32mI (877) spi_flash: detected chip: boya[0m
+[0;32mI (881) spi_flash: flash io: qio[0m
+[0;32mI (885) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (892) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (899) main_task: Started on CPU0[0m
+[0;32mI (909) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (909) main_task: Calling app_main()[0m
+[0;32mI (919) OpenAudioOS: OpenAudioOS M0 starting[0m
+[0;32mI (919) OpenAudioOS: Free heap: 8672256[0m
+[0;32mI (929) OpenAudioOS: Free PSRAM: 8385720[0m
+[0;32mI (949) pp: pp rom version: e7ae62f[0m
+[0;32mI (949) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (959) wifi:wifi driver task: 3fcb789c, prio:23, stack:6656, core=0[0m
+[0;32mI (959) wifi:wifi firmware version: b0fd6006b[0m
+[0;32mI (969) wifi:wifi certification version: v7.0[0m
+[0;32mI (969) wifi:config NVS flash: enabled[0m
+[0;32mI (969) wifi:config nano formating: disabled[0m
+[0;32mI (969) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (969) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (979) wifi:Init management short buffer num: 32[0m
+[0;32mI (979) wifi:Init static tx buffer num: 16[0m
+[0;32mI (989) wifi:Init tx cache buffer num: 32[0m
+[0;32mI (989) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (989) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (999) wifi:Init static rx buffer num: 10[0m
+[0;32mI (999) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1009) wifi_init: rx ba win: 6[0m
+[0;32mI (1009) wifi_init: accept mbox: 6[0m
+[0;32mI (1009) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1019) wifi_init: udp mbox: 6[0m
+[0;32mI (1019) wifi_init: tcp mbox: 6[0m
+[0;32mI (1029) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1029) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1029) wifi_init: tcp mss: 1440[0m
+[0;32mI (1039) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1039) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (1049) phy_init: phy_version 680,a6008b2,Jun  4 2024,16:41:10[0m
+[0;33mW (1089) phy_init: saving new calibration data because of checksum failure, mode(0)[0m
+[0;32mI (1119) wifi:mode : sta (14:c1:9f:c9:f3:c4)[0m
+[0;32mI (1119) wifi:enable tsf[0m
+[0;32mI (1119) OpenAudioOS: Waiting for WiFi connection...[0m
+[0;32mI (1119) OpenAudioOS: WiFi STA started, connecting to WiFi2[0m
+[0;32mI (1129) wifi:new:<6,0>, old:<1,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (1129) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (1299) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (1319) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (1589) wifi:connected with WiFi2, aid = 2, channel 6, BW20, bssid = ee:63:da:b7:d9:9d[0m
+[0;32mI (1589) wifi:security: WPA2-PSK, phy: bgn, rssi: -53[0m
+[0;32mI (1599) wifi:pm start, type: 1[0m
+
+[0;32mI (1599) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (1599) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (1639) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (1729) wifi:<ba-add>idx:0 (ifx:0, ee:63:da:b7:d9:9d), tid:6, ssn:2, winSize:64[0m
+[0;32mI (2609) esp_netif_handlers: sta ip: 192.168.1.117, mask: 255.255.255.0, gw: 192.168.1.1[0m
+[0;32mI (2609) OpenAudioOS: Got IP: 192.168.1.117[0m
+[0;32mI (2609) OpenAudioOS: HTTP server started on port 80[0m
+[0;32mI (2619) OpenAudioOS: I2S initialized: BCLK=11 DOUT=12 LRCK=13 sample_rate=44100[0m
+[0;32mI (2619) OpenAudioOS: Audio test tone started: 440 Hz[0m
+[0;32mI (2619) OpenAudioOS: Status: heap=8501920 psram=8384856 uptime=1752ms ip=192.168.1.117[0m
+[0;32mI (2619) main_task: Returned from app_main()[0m
+[0;32mI (12569) wifi:<ba-add>idx:1 (ifx:0, ee:63:da:b7:d9:9d), tid:0, ssn:4, winSize:64[0m
+[0;32mI (12639) OpenAudioOS: Status: heap=8510500 psram=8384856 uptime=11765ms ip=192.168.1.117[0m
+[0;32mI (22639) OpenAudioOS: Status: heap=8510192 psram=8384856 uptime=21765ms ip=192.168.1.117[0m
+[0;32mI (32639) OpenAudioOS: Status: heap=8510192 psram=8384856 uptime=31765ms ip=192.168.1.117[0m
+[0;33mW (42259) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;33mW (42279) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;32mI (42639) OpenAudioOS: Status: heap=8511016 psram=8384856 uptime=41765ms ip=192.168.1.117[0m
+[0;32mI (52639) OpenAudioOS: Status: heap=8511064 psram=8384856 uptime=51765ms ip=192.168.1.117[0m
+[0;32mI (62639) OpenAudioOS: Status: heap=8511064 psram=8384856 uptime=61765ms ip=192.168.1.117[0m
+[0;32mI (72639) OpenAudioOS: Status: heap=8511024 psram=8384856 uptime=71765ms ip=192.168.1.117[0m
+[0;32mI (82639) OpenAudioOS: Status: heap=8511024 psram=8384856 uptime=81765ms ip=192.168.1.117[0m
+[0;32mI (92639) OpenAudioOS: Status: heap=8511024 psram=8384856 uptime=91765ms ip=192.168.1.117[0m
+[0;32mI (102639) OpenAudioOS: Status: heap=8511024 psram=8384856 uptime=101765ms ip=192.168.1.117[0m
+[0;32mI (112639) OpenAudioOS: Status: heap=8511024 psram=8384856 uptime=111765ms ip=192.168.1.117[0m
+[0;32mI (122639) OpenAudioOS: Status: heap=8511084 psram=8384856 uptime=121765ms ip=192.168.1.117[0m
+[0;32mI (132639) OpenAudioOS: Status: heap=8511048 psram=8384856 uptime=131765ms ip=192.168.1.117[0m
+[0;32mI (142639) OpenAudioOS: Status: heap=8511048 psram=8384856 uptime=141765ms ip=192.168.1.117[0m
+[0;32mI (152639) OpenAudioOS: Status: heap=8511084 psram=8384856 uptime=151765ms ip=192.168.1.117[0m
+[0;32mI (162639) OpenAudioOS: Status: heap=8511048 psram=8384856 uptime=161765ms ip=192.168.1.117[0m
+[0;32mI (172639) OpenAudioOS: Status: heap=8511048 psram=8384856 uptime=171765ms ip=192.168.1.117[0m
+[0;32mI (182639) OpenAudioOS: Status: heap=8511048 psram=8384856 uptime=181765ms ip=192.168.1.117[0m
+[0;32mI (192639) OpenAudioOS: Status: heap=8511084 psram=8384856 uptime=191765ms ip=192.168.1.117[0m
+[0;32mI (202639) OpenAudioOS: Status: heap=8511084 psram=8384856 uptime=201765ms ip=192.168.1.117[0m
+[0;32mI (212639) OpenAudioOS: Status: heap=8511084 psram=8384856 uptime=211765ms ip=192.168.1.117[0m
+[0;32mI (222639) OpenAudioOS: Status: heap=8511084 psram=8384856 uptime=221765ms ip=192.168.1.117[0m
